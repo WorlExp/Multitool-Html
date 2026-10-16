@@ -3,125 +3,86 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>VENICE MULTI TOOL - 250 Ozellikli Discord Self-Bot</title>
+<title>VENICE MULTI TOOL</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0b;--bg2:#0e0e10;--bg3:#131315;--bg4:#18181b;
-  --line:#202024;--line2:#2a2a30;
-  --txt:#e6e6e9;--mut:#78787f;--mut2:#4d4d55;
-  --acc:#5b6cff;--ok:#3ecf8e;--warn:#d9a832;--err:#e05252;
-}
-::-webkit-scrollbar{width:7px;height:7px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:#26262c;border-radius:6px}
-::-webkit-scrollbar-thumb:hover{background:#34343c}
+:root{--bg:#0a0a0b;--bg2:#0e0e10;--bg3:#131315;--bg4:#18181b;--line:#202024;--line2:#2a2a30;
+--txt:#e6e6e9;--mut:#78787f;--mut2:#4d4d55;--acc:#5b6cff;--ok:#3ecf8e;--warn:#d9a832;--err:#e05252}
+::-webkit-scrollbar{width:7px;height:7px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#26262c;border-radius:6px}::-webkit-scrollbar-thumb:hover{background:#34343c}
 html,body{background:var(--bg);color:var(--txt);font:13px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 input,textarea,select{width:100%;background:var(--bg3);border:1px solid var(--line);color:var(--txt);border-radius:5px;padding:6px 8px;font:12px inherit;outline:none}
 input:focus,textarea:focus,select:focus{border-color:var(--line2);background:var(--bg4)}
-textarea{resize:vertical;min-height:64px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.5}
+textarea{resize:vertical;min-height:60px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.5}
 label{font-size:10px;letter-spacing:.06em;color:var(--mut2);text-transform:uppercase;font-weight:600}
 button{font:11px inherit;font-weight:600;letter-spacing:.04em;background:var(--bg4);border:1px solid var(--line);color:var(--txt);border-radius:5px;padding:6px 10px;cursor:pointer}
-button:hover{border-color:var(--line2);background:#1e1e22}
-button:active{opacity:.75}
-button.p{background:var(--acc);border-color:var(--acc);color:#fff}
-button.p:hover{background:#4d5ee8;border-color:#4d5ee8}
-button.g{background:transparent}
-button.w{width:100%}
-button.sm{padding:4px 8px;font-size:10px}
-button:disabled{opacity:.4;cursor:default}
-
-#app{display:flex;height:800px;overflow:hidden;border:1px solid var(--line)}
-
-/* ---- SIDEBAR ---- */
-#side{width:182px;flex:0 0 182px;background:var(--bg2);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+button:hover{border-color:var(--line2);background:#1e1e22}button:active{opacity:.75}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}button.p:hover{background:#4d5ee8}
+button.g{background:transparent}button.w{width:100%}button.sm{padding:4px 8px;font-size:10px}
+button.red{background:#2a1417;border-color:#4a2226;color:#f08a8a}button.red:hover{background:#341a1e}
+#app{display:flex;height:820px;overflow:hidden;border:1px solid var(--line)}
+#side{width:186px;flex:0 0 186px;background:var(--bg2);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
 #brand{padding:11px 12px;border-bottom:1px solid var(--line)}
 #brand b{display:block;font-size:12px;letter-spacing:.12em}
-#brand span{font-size:9.5px;color:var(--mut2);letter-spacing:.1em}
+#brand span{font-size:9px;color:var(--mut2);letter-spacing:.1em}
 #tok{padding:10px 11px;border-bottom:1px solid var(--line)}
-#tok .rw{display:flex;gap:4px;margin:5px 0}
-#tok .rw input{flex:1}
-#acc{font-size:10px;color:var(--mut);margin-top:6px;word-break:break-all}
-#acc b{color:var(--txt);font-weight:600}
+#tok .rw{display:flex;gap:4px;margin:5px 0}#tok .rw input{flex:1}
+#acc{font-size:10px;color:var(--mut);margin-top:6px;word-break:break-all}#acc b{color:var(--txt)}
 #nav{flex:1;overflow-y:auto;padding:6px}
-#nav .hd{font-size:9px;letter-spacing:.12em;color:var(--mut2);padding:8px 6px 4px;font-weight:700}
-.nv{display:flex;align-items:center;justify-content:space-between;padding:5px 7px;border-radius:4px;font-size:11.5px;color:var(--mut);cursor:pointer}
-.nv:hover{background:var(--bg3);color:var(--txt)}
-.nv.a{background:var(--bg4);color:var(--txt)}
-.nv u{text-decoration:none;font-size:10px;color:var(--mut2);font-family:ui-monospace,monospace}
+.nv{padding:6px 8px;border-radius:4px;font-size:11.5px;color:var(--mut);cursor:pointer;display:flex;justify-content:space-between}
+.nv:hover{background:var(--bg3);color:var(--txt)}.nv.a{background:var(--bg4);color:var(--txt)}
+.nv u{text-decoration:none;font-size:9.5px;color:var(--mut2);font-family:ui-monospace,monospace}
 #sft{padding:7px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
-
-/* ---- MAIN ---- */
 main{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--bg)}
-#top{display:flex;align-items:center;gap:14px;padding:8px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.kv{font-size:10.5px;color:var(--mut2);letter-spacing:.05em}
-.kv b{color:var(--txt);font-family:ui-monospace,monospace;font-weight:600}
-#st{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.05em;color:var(--err)}
+#top{display:flex;align-items:center;gap:13px;padding:8px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.kv{font-size:10.5px;color:var(--mut2)}.kv b{color:var(--txt);font-family:ui-monospace,monospace}
+#st{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--err)}
 #st:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--err)}
-#st.live{color:var(--ok)}
-#st.live:before{background:var(--ok)}
-#search{width:150px;margin-left:auto}
-#tabs{display:flex;gap:0;padding:0 12px;border-bottom:1px solid var(--line);overflow-x:auto}
-.tb{background:none;border:none;border-bottom:1px solid transparent;border-radius:0;color:var(--mut);padding:8px 11px;font-size:10.5px;letter-spacing:.08em;white-space:nowrap}
-.tb:hover{background:none;color:var(--txt);border-color:transparent}
-.tb.a{color:var(--txt);border-bottom-color:var(--txt)}
-#views{flex:1;overflow:hidden;position:relative}
-.vw{display:none;height:100%;overflow-y:auto;padding:12px}
-.vw.a{display:block}
-
-/* ---- FEATURES ---- */
-#prs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:6px}
-.fc{border:1px solid var(--line);border-radius:5px;padding:8px 9px;background:var(--bg2)}
-.fc.o{border-color:#2f3350;background:#101018}
-.fh{display:flex;gap:8px;align-items:flex-start}
-.fn{font-size:11.5px;font-weight:600;flex:1;line-height:1.3}
-.fi{font-size:9px;color:var(--mut2);font-family:ui-monospace,monospace;margin-top:2px}
-.fd{font-size:10.5px;color:var(--mut);margin-top:5px;line-height:1.35}
-.fm{display:flex;gap:4px;margin-top:6px}
-.tg{position:relative;width:28px;height:15px;flex:0 0 28px;cursor:pointer}
-.tg input{display:none}
-.tg i{position:absolute;inset:0;background:var(--bg4);border:1px solid var(--line2);border-radius:9px}
-.tg i:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--mut);top:2px;left:2px;transition:.12s}
-.tg input:checked+i{background:var(--acc);border-color:var(--acc)}
-.tg input:checked+i:after{left:15px;background:#fff}
-.cp{font-size:8.5px;letter-spacing:.06em;color:var(--mut2);border:1px solid var(--line);padding:1px 5px;border-radius:3px;text-transform:uppercase}
-
-/* ---- PANELS ---- */
+#st.live{color:var(--ok)}#st.live:before{background:var(--ok)}
+#views{flex:1;overflow:hidden}
+.vw{display:none;height:100%;overflow-y:auto;padding:12px}.vw.a{display:block}
 .pn{border:1px solid var(--line);border-radius:5px;padding:11px;margin-bottom:8px;background:var(--bg2)}
-.pn h3{font-size:10px;letter-spacing:.12em;color:var(--mut);font-weight:700;margin-bottom:9px}
-.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.pn h3{font-size:10px;letter-spacing:.12em;color:var(--mut);font-weight:700;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center}
+.pn h3 span{color:var(--mut2);font-weight:400;letter-spacing:0;font-size:9.5px}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .fl{display:flex;flex-direction:column;gap:4px}
-.rw{display:flex;gap:5px;flex-wrap:wrap}
-.rw input{flex:1}
+.rw{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.rw input{flex:1;min-width:90px}
 .note{font-size:10.5px;color:var(--mut2);margin-top:7px;line-height:1.5}
 .note b{color:var(--mut)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px}
+.tg{display:flex;align-items:center;gap:7px;padding:5px 7px;border:1px solid var(--line);border-radius:4px;cursor:pointer;font-size:11px;color:var(--mut)}
+.tg:hover{background:var(--bg3)}
+.tg.on{color:var(--txt);border-color:#2f3350;background:#101018}
+.tg input{display:none}
+.tg i{width:24px;height:13px;flex:0 0 24px;border-radius:8px;background:var(--bg4);border:1px solid var(--line2);position:relative}
+.tg i:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--mut);top:1.5px;left:1.5px;transition:.12s}
+.tg input:checked+i{background:var(--acc);border-color:var(--acc)}
+.tg input:checked+i:after{left:13px;background:#fff}
 #logbox{background:#070708;border:1px solid var(--line);border-radius:5px;padding:7px;height:100%;overflow-y:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px}
 .ln{display:flex;gap:9px;padding:1px 2px;word-break:break-word}
-.lt{color:var(--mut2);flex:0 0 58px}
-.lm{flex:1}
+.lt{color:var(--mut2);flex:0 0 56px}.lm{flex:1}
 .ln.ok .lm{color:var(--ok)}.ln.err .lm{color:var(--err)}.ln.warn .lm{color:var(--warn)}.ln.info .lm{color:#8fa5ff}.ln.dim .lm{color:var(--mut2)}
-#v-console{display:none;flex-direction:column;gap:8px;padding:12px}
-#v-console.a{display:flex}
-#logwrap{flex:1;min-height:0}
+#v-log{display:none;flex-direction:column;gap:8px;padding:12px}#v-log.a{display:flex}
+#lw{flex:1;min-height:0}
 table{width:100%;border-collapse:collapse;font-size:11px}
-th{text-align:left;color:var(--mut2);font-size:9px;letter-spacing:.1em;padding:5px 7px;border-bottom:1px solid var(--line);text-transform:uppercase;font-weight:700}
-td{padding:5px 7px;border-bottom:1px solid #17171a;color:var(--mut)}
-tr:hover td{color:var(--txt)}
+th{text-align:left;color:var(--mut2);font-size:9px;letter-spacing:.1em;padding:5px 7px;border-bottom:1px solid var(--line);text-transform:uppercase}
+td{padding:5px 7px;border-bottom:1px solid #17171a;color:var(--mut);word-break:break-all}tr:hover td{color:var(--txt)}
 .bar{height:5px;background:var(--bg4);border-radius:4px;overflow:hidden;margin-top:8px}
-.bar i{display:block;height:100%;width:0;background:var(--acc);transition:.25s}
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:6px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:.2s}
+.out{background:#070708;border:1px solid var(--line);border-radius:5px;padding:8px;margin-top:8px;font-family:ui-monospace,monospace;font-size:11px;max-height:190px;overflow-y:auto;white-space:pre-wrap;color:var(--mut)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px}
 .stt{border:1px solid var(--line);border-radius:5px;padding:8px;text-align:center}
-.stt b{display:block;font-size:17px;font-family:ui-monospace,monospace;font-weight:600}
-.stt span{font-size:9px;color:var(--mut2);letter-spacing:.08em;text-transform:uppercase}
+.stt b{display:block;font-size:16px;font-family:ui-monospace,monospace}.stt span{font-size:9px;color:var(--mut2);letter-spacing:.08em;text-transform:uppercase}
+.hs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.hsb{border:1px solid var(--line);border-radius:5px;padding:9px;text-align:center;cursor:pointer;font-size:11px;font-weight:600}
+.hsb:hover{border-color:var(--line2)}.hsb.b{color:#6f9ff5}.hsb.r{color:#f08a8a}.hsb.g{color:#3ecf8e}
 </style>
 </head>
 <body>
 <div id="app">
-
   <aside id="side">
-    <div id="brand"><b>VENICE MULTI TOOL</b><span>250 OZELLIK / SELF-BOT</span></div>
+    <div id="brand"><b>VENICE MULTI TOOL</b><span id="featCount">0 OZELLIK</span></div>
     <div id="tok">
       <label>User Token</label>
       <div class="rw"><input id="token" type="password" placeholder="MTIzNDU2..."/><button id="eye" class="sm">GOSTER</button></div>
@@ -130,8 +91,8 @@ tr:hover td{color:var(--txt)}
     </div>
     <nav id="nav"></nav>
     <div id="sft">
-      <button id="allOn" class="g w sm">TUMUNU AC</button>
-      <button id="allOff" class="g w sm">TUMUNU KAPAT</button>
+      <button id="taskStop" class="g w sm" style="display:none">DURDUR</button>
+      <button id="panic" class="red w sm">PANIK: HERSEYI BIRAK</button>
     </div>
   </aside>
 
@@ -141,144 +102,319 @@ tr:hover td{color:var(--txt)}
       <div class="kv">ping <b id="pLat">-</b></div>
       <div class="kv">sunucu <b id="pGuild">0</b></div>
       <div class="kv">snipe <b id="pSnipe">0</b></div>
-      <div class="kv">ozellik <b id="pFeat">250</b></div>
-      <input id="search" placeholder="ara..."/>
-    </div>
-
-    <div id="tabs">
-      <button class="tb a" data-tab="features">OZELLIKLER</button>
-      <button class="tb" data-tab="sniper">SNIPER</button>
-      <button class="tb" data-tab="join">KATILIM</button>
-      <button class="tb" data-tab="scan">GIZLI KANAL</button>
-      <button class="tb" data-tab="tools">ARACLAR</button>
-      <button class="tb" data-tab="console">KONSOL</button>
+      <div class="kv">islem <b id="pTask">-</b></div>
     </div>
 
     <div id="views">
 
-      <div class="vw a" id="v-features">
-        <div id="prs">
-          <button class="sm" data-preset="sniper">SNIPER MODU</button>
-          <button class="sm" data-preset="ghost">HAYALET MOD</button>
-          <button class="sm" data-preset="join">KATILIM MODU</button>
-          <button class="sm" data-preset="full">TAM GUC</button>
-          <button class="sm g" data-preset="reset">SIFIRLA</button>
-        </div>
-        <div id="grid"></div>
-      </div>
-
-      <div class="vw" id="v-sniper">
+      <!-- ============ HESAP ============ -->
+      <div class="vw a" id="v-hesap">
         <div class="pn">
-          <h3>SNIPER AYARLARI</h3>
+          <h3>HESAP BILGISI</h3>
+          <div class="rw"><button id="accInfo" class="p">BILGILERI CEK</button><button id="accRefresh" class="g">PROFIL YENILE</button></div>
+          <div class="out" id="accOut">bagli degil</div>
+        </div>
+
+        <div class="pn">
+          <h3>HYPESQUAD GIVER <span>house id 1/2/3</span></h3>
+          <div class="hs">
+            <div class="hsb b" data-hs="1">BRAVERY</div>
+            <div class="hsb r" data-hs="2">BRILLIANCE</div>
+            <div class="hsb g" data-hs="3">BALANCE</div>
+          </div>
+          <div class="rw" style="margin-top:8px"><button id="hsClear" class="g">HOUSE TEMIZLE</button><button id="hsRandom" class="g">RASTGELE</button></div>
+        </div>
+
+        <div class="pn">
+          <h3>BIO / HAKKINDA <span>max 190</span></h3>
+          <textarea id="bio" style="min-height:56px"></textarea>
+          <button id="bioSet" class="p w" style="margin-top:6px">BIO KAYDET</button>
+        </div>
+
+        <div class="pn">
+          <h3>KULLANICI ADI <span>2/saat limit</span></h3>
+          <div class="rw"><input id="uname" placeholder="yeni_kullanici_adi"/><button id="unameSet" class="p">DEGISTIR</button></div>
+        </div>
+
+        <div class="pn">
+          <h3>DURUM / CUSTOM STATUS</h3>
           <div class="fr">
-            <div class="fl"><label>Snipe gecikmesi (ms)</label><input id="snipeDelay" type="number" value="700"/></div>
-            <div class="fl"><label>Kod kara listesi</label><input id="snipeBl" placeholder="kod1,kod2"/></div>
-            <div class="fl"><label>Kelime filtresi</label><input id="snipeWord" placeholder="nitro, steam"/></div>
+            <div class="fl"><label>Durum</label><select id="stVal"><option>online</option><option>idle</option><option>dnd</option><option>invisible</option></select></div>
+            <div class="fl"><label>Custom metin</label><input id="stText" placeholder="mesgul"/></div>
+            <div class="fl"><label>Emoji</label><input id="stEmoji" placeholder=":)" /></div>
+            <div class="fl"><label>Aktivite</label><input id="stAct" placeholder="Venice"/></div>
+            <div class="fl"><label>Aktivite tipi</label><select id="stType"><option value="0">Oynuyor</option><option value="1">Yayinda</option><option value="2">Dinliyor</option><option value="3">Izliyor</option><option value="4">Custom</option><option value="5">Yarisiyor</option></select></div>
           </div>
-          <div class="note">Tum mesajlari dinler. discord.gift / promos.discord.com linklerini ve embed icerigini tarar, kodu aninda /entitlement-gifts/{kod}/redeem ile claimler. 429 gelirse retry_after kadar bekler.</div>
+          <button id="stApply" class="p w" style="margin-top:8px">UYGULA</button>
         </div>
-        <div class="pn">
-          <h3>ISTATISTIK</h3>
-          <div class="sg">
-            <div class="stt"><b id="stTry">0</b><span>Deneme</span></div>
-            <div class="stt"><b id="stClaim">0</b><span>Basarili</span></div>
-            <div class="stt"><b id="stSeen">0</b><span>Gorulen</span></div>
-            <div class="stt"><b id="stQ">0</b><span>Kuyruk</span></div>
-          </div>
-        </div>
-        <div class="pn">
-          <h3>SNIPE GECMISI</h3>
-          <table><thead><tr><th>SAAT</th><th>KOD</th><th>SONUC</th><th>MS</th></tr></thead><tbody id="snipeBody"><tr><td colspan="4" style="text-align:center;padding:12px">kayit yok</td></tr></tbody></table>
-        </div>
-      </div>
 
-      <div class="vw" id="v-join">
         <div class="pn">
-          <h3>OTOMATIK SUNUCU KATILIM</h3>
+          <h3>PROFIL GORSELI</h3>
           <div class="fr">
-            <div class="fl"><label>Katilma gecikmesi (ms)</label><input id="joinDelay" type="number" value="5200"/></div>
-            <div class="fl"><label>Maks sunucu</label><input id="maxGuilds" type="number" value="100"/></div>
-            <div class="fl"><label>Durum</label><input id="joinState" value="beklemede" readonly/></div>
-          </div>
-          <div class="rw" style="margin-top:9px">
-            <button id="startJoin" class="p">BASLAT</button>
-            <button id="stopJoin">DURDUR</button>
-            <button id="resetJoin" class="g">SIFIRLA</button>
-          </div>
-          <div class="bar"><i id="joinProg"></i></div>
-          <div class="note">Hicbir sunucudan cikilmaz. Limit dolarsa katilma durur, uyelikler korunur. Zaten uye olunanlar atlanir.</div>
-        </div>
-        <div class="pn">
-          <h3>SUNUCU LISTESI (<span id="srvCount">0</span>)</h3>
-          <textarea id="srvBox" style="min-height:140px"></textarea>
-          <button id="saveSrv" class="w" style="margin-top:6px">LISTEYI KAYDET</button>
-        </div>
-        <div class="pn">
-          <h3>KATILIM GECMISI</h3>
-          <table><thead><tr><th>#</th><th>SUNUCU</th><th>KOD</th><th>DURUM</th></tr></thead><tbody id="joinBody"><tr><td colspan="4" style="text-align:center;padding:12px">kayit yok</td></tr></tbody></table>
-        </div>
-      </div>
-
-      <div class="vw" id="v-scan">
-        <div class="pn">
-          <h3>GIZLI KANAL TARAYICI</h3>
-          <div class="note" style="margin:0 0 9px">User token ile istemcinin gizledigi kanallari bulur. Rol ve kanal overwrite verisinden VIEW_CHANNEL izni hesaplanir, izin olmasa bile okuma denenir.</div>
-          <div class="rw">
-            <button id="startScan" class="p">TARAMAYI BASLAT</button>
-            <button id="expScan" class="g">JSON INDIR</button>
-          </div>
-          <div class="bar"><i id="scanProg"></i></div>
-          <div class="note" id="scanInfo">beklemede</div>
-        </div>
-        <div class="pn">
-          <h3>BULUNANLAR (<span id="hidCount">0</span>)</h3>
-          <table><thead><tr><th>SUNUCU</th><th>KANAL</th><th>TIP</th><th></th></tr></thead><tbody id="scanBody"><tr><td colspan="4" style="text-align:center;padding:12px">tarama yapilmadi</td></tr></tbody></table>
-        </div>
-      </div>
-
-      <div class="vw" id="v-tools">
-        <div class="pn">
-          <h3>HIZLI MESAJ</h3>
-          <div class="fr">
-            <div class="fl"><label>Kanal ID</label><input id="tChan" placeholder="123456789012345678"/></div>
-            <div class="fl"><label>Mesaj</label><input id="tMsg" placeholder="merhaba"/></div>
+            <div class="fl"><label>Avatar (png/jpg/gif)</label><input id="avFile" type="file" accept="image/*"/></div>
+            <div class="fl"><label>Banner (nitro)</label><input id="bnFile" type="file" accept="image/*"/></div>
           </div>
           <div class="rw" style="margin-top:8px">
-            <button id="tSend" class="p">GONDER</button>
-            <button id="tPurge">SON 100 SIL</button>
-            <button id="tPing" class="g">KANAL BILGISI</button>
+            <button id="avUp" class="p">AVATAR YUKLE</button>
+            <button id="bnUp" class="p">BANNER YUKLE</button>
+            <button id="avDel" class="g">AVATAR SIL</button>
           </div>
+          <div class="rw" style="margin-top:8px"><input id="accent" placeholder="#5b6cff"/><button id="accentSet" class="g">ACCENT RENGI</button></div>
+        </div>
+
+        <div class="pn">
+          <h3>BAGLANTILAR</h3>
+          <button id="connList" class="w">BAGLI HESAPLARI LISTELE</button>
+          <div class="out" id="connOut">-</div>
+        </div>
+      </div>
+
+      <!-- ============ SNIPER ============ -->
+      <div class="vw" id="v-sniper">
+        <div class="pn">
+          <h3>NITRO SNIPER</h3>
+          <div class="g2" id="snToggles"></div>
+          <div class="fr" style="margin-top:9px">
+            <div class="fl"><label>Snipe gecikmesi (ms)</label><input id="snDelay" type="number" value="700"/></div>
+            <div class="fl"><label>Kod kara liste</label><input id="snBl" placeholder="kod1,kod2"/></div>
+          </div>
+          <div class="note">Gateway'den tum mesajlari dinler, discord.gift / promos.discord.com linklerini ve embed icerigini tarar, kodu /entitlement-gifts/{kod}/redeem ile aninda claimler.</div>
+        </div>
+        <div class="pn"><h3>ISTATISTIK</h3><div class="sg">
+          <div class="stt"><b id="sTry">0</b><span>Deneme</span></div>
+          <div class="stt"><b id="sClaim">0</b><span>Basarili</span></div>
+          <div class="stt"><b id="sSeen">0</b><span>Gorulen</span></div>
+          <div class="stt"><b id="sQ">0</b><span>Kuyruk</span></div>
+        </div></div>
+        <div class="pn"><h3>SNIPE GECMISI</h3>
+          <table><thead><tr><th>SAAT</th><th>KOD</th><th>SONUC</th><th>MS</th></tr></thead><tbody id="snBody"><tr><td colspan="4" style="text-align:center;padding:12px">kayit yok</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- ============ OTO ============ -->
+      <div class="vw" id="v-oto">
+        <div class="pn">
+          <h3>GIVEAWAY JOINER</h3>
+          <div class="g2" id="gwToggles"></div>
+          <div class="fr" style="margin-top:9px">
+            <div class="fl"><label>Emoji</label><input id="gwEmoji" value="&#127881;"/></div>
+            <div class="fl"><label>Anahtar kelimeler</label><input id="gwKeys" value="giveaway,cekilis,nitro"/></div>
+          </div>
+          <div class="note">Anahtar kelime veya emoji eslesince otomatik katilir. Hediye dagitan sunucularda acik tut.</div>
         </div>
         <div class="pn">
-          <h3>PRESENCE</h3>
-          <div class="fr">
-            <div class="fl"><label>Durum</label><select id="pStatus"><option>online</option><option>idle</option><option>dnd</option><option>invisible</option></select></div>
-            <div class="fl"><label>Aktivite</label><input id="pAct" value="Venice Multi Tool"/></div>
-            <div class="fl"><label>Tip</label><select id="pType"><option value="0">Oynuyor</option><option value="1">Yayinda</option><option value="2">Dinliyor</option><option value="3">Izliyor</option><option value="5">Yarisiyor</option></select></div>
-          </div>
-          <button id="pApply" class="p w" style="margin-top:8px">UYGULA</button>
+          <h3>GHOST PING DEDEKTORU</h3>
+          <div class="g2" id="gpToggles"></div>
+          <div class="out" id="gpOut">-</div>
         </div>
         <div class="pn">
-          <h3>OTO YANIT KURALLARI</h3>
+          <h3>OTO YANIT</h3>
           <textarea id="arRules" placeholder="selam => selam kanka&#10;regex:^p!ping => pong&#10;icinde:venice => cok iyi"></textarea>
-          <button id="saveAr" class="w" style="margin-top:6px">KAYDET</button>
-          <div class="note">On ekler: <b>tam:</b> <b>icinde:</b> <b>regex:</b> <b>basla:</b> <b>bitis:</b> - coklu yanit icin | kullan.</div>
+          <div class="g2" style="margin-top:8px" id="arToggles"></div>
+          <button id="arSave" class="p w" style="margin-top:8px">KURALLARI KAYDET</button>
+        </div>
+        <div class="pn">
+          <h3>OTO TEPKI</h3>
+          <div class="g2" id="reToggles"></div>
+          <div class="fl" style="margin-top:9px"><label>Emoji havuzu (virgul)</label><input id="rePool" value="&#128077;,&#128293;,&#9989;"/></div>
+        </div>
+        <div class="pn">
+          <h3>BILDIRIM</h3>
+          <div class="g2" id="noToggles"></div>
+          <div class="fl" style="margin-top:9px"><label>Kelime</label><input id="noWord" placeholder="nitro"/></div>
+        </div>
+      </div>
+
+      <!-- ============ TOPLU ============ -->
+      <div class="vw" id="v-toplu">
+        <div class="pn">
+          <h3>TOPLU DM</h3>
+          <div class="fl"><label>Mesaj</label><textarea id="mdmMsg" style="min-height:50px">selam</textarea></div>
+          <div class="fr" style="margin-top:8px">
+            <div class="fl"><label>Gecikme (ms)</label><input id="mdmDelay" type="number" value="1200"/></div>
+            <div class="fl"><label>Hedef</label><select id="mdmTarget"><option value="friends">Tum arkadaslar</option><option value="dms">Mevcut DM kanallari</option><option value="members">Sunucu uyeleri (guild id)</option></select></div>
+            <div class="fl"><label>Guild ID (members icin)</label><input id="mdmGuild" placeholder="123..."/></div>
+          </div>
+          <button id="mdmStart" class="p w" style="margin-top:8px">TOPLU DM GONDER</button>
+        </div>
+
+        <div class="pn">
+          <h3>TOPLU MESAJ</h3>
+          <div class="fl"><label>Kanal ID listesi (satir satir)</label><textarea id="mmChans" style="min-height:60px" placeholder="123456789&#10;987654321"></textarea></div>
+          <div class="fl" style="margin-top:8px"><label>Mesaj</label><input id="mmMsg" placeholder="merhaba"/></div>
+          <button id="mmStart" class="p w" style="margin-top:8px">GONDER</button>
+        </div>
+
+        <div class="pn">
+          <h3>TOPLU SIL / PURGE</h3>
+          <div class="fr">
+            <div class="fl"><label>Kanal ID</label><input id="pgChan"/></div>
+            <div class="fl"><label>Limit</label><input id="pgLimit" type="number" value="200"/></div>
+            <div class="fl"><label>Filtre</label><select id="pgFilter"><option value="me">Sadece benim</option><option value="all">Herkes</option><option value="bot">Botlar</option></select></div>
+          </div>
+          <button id="pgStart" class="p w" style="margin-top:8px">SIL</button>
+        </div>
+
+        <div class="pn">
+          <h3>TOPLU TEPKI</h3>
+          <div class="fr">
+            <div class="fl"><label>Kanal ID</label><input id="mrChan"/></div>
+            <div class="fl"><label>Mesaj ID</label><input id="mrMsg"/></div>
+            <div class="fl"><label>Emoji</label><input id="mrEmoji" value="&#9989;"/></div>
+          </div>
+          <button id="mrStart" class="p w" style="margin-top:8px">TEPKI VER</button>
+        </div>
+
+        <div class="pn">
+          <h3>TOPLU ARKADAS ISTEGI</h3>
+          <div class="fl"><label>kullanici_adi (satir satir)</label><textarea id="frList" style="min-height:60px"></textarea></div>
+          <button id="frStart" class="p w" style="margin-top:8px">ISTEK GONDER</button>
+        </div>
+
+        <div class="pn">
+          <h3>TOPLU NICK</h3>
+          <div class="fr">
+            <div class="fl"><label>Guild ID</label><input id="nkGuild"/></div>
+            <div class="fl"><label>Yeni nick</label><input id="nkVal"/></div>
+          </div>
+          <button id="nkSet" class="p w" style="margin-top:8px">NICK DEGISTIR</button>
+        </div>
+
+        <div class="pn">
+          <h3>NUKER</h3>
+          <div class="fl"><label>Korunacak guild ID (virgul)</label><input id="nkKeep" placeholder="123,456"/></div>
+          <div class="rw" style="margin-top:8px">
+            <button id="nuLeave" class="p">TUM SUNUCULARDAN CIK</button>
+            <button id="nuDm" class="p">TUM DM LERI KAPAT</button>
+            <button id="nuWh" class="p">WEBHOOKLARI SIL</button>
+            <button id="nuRead" class="g">TUMUNU OKUNDU YAP</button>
+          </div>
+        </div>
+
+        <div class="pn"><h3>ISLEM DURUMU</h3><div class="bar"><i id="taskBar"></i></div><div class="out" id="taskOut">beklemede</div></div>
+      </div>
+
+      <!-- ============ SUNUCU ============ -->
+      <div class="vw" id="v-sunucu">
+        <div class="pn">
+          <h3>SUNUCU BILGISI</h3>
+          <div class="rw"><input id="gId" placeholder="guild id"/><button id="gInfo" class="p">CEK</button></div>
+          <div class="out" id="gOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>KANALLAR / ROLLER / EMOJILER</h3>
+          <div class="rw"><button id="gChans" class="g">KANALLAR</button><button id="gRoles" class="g">ROLLER</button><button id="gEmojis" class="g">EMOJILER</button><button id="gStick" class="g">STICKERLAR</button><button id="gWh" class="g">WEBHOOKLAR</button></div>
+          <div class="out" id="gOut2">-</div>
+        </div>
+        <div class="pn">
+          <h3>UYE ARAMA</h3>
+          <div class="rw"><input id="mSearch" placeholder="kullanici adi"/><button id="mSearchGo" class="p">ARA</button></div>
+          <div class="out" id="mOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>DAVET OLUSTUR / COZ</h3>
+          <div class="rw"><input id="invChan" placeholder="kanal id"/><button id="invCreate" class="p">OLUSTUR</button><input id="invCode" placeholder="davet kodu/link"/><button id="invInfo" class="g">COZ</button></div>
+          <div class="out" id="invOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>GIZLI KANAL TARAYICI</h3>
+          <div class="rw"><button id="hScan" class="p">TARAMA BASLAT</button><button id="hExp" class="g">JSON INDIR</button></div>
+          <div class="bar"><i id="hBar"></i></div>
+          <div class="note" id="hInfo">beklemede</div>
+          <table><thead><tr><th>SUNUCU</th><th>KANAL</th><th>TIP</th><th>OKU</th></tr></thead><tbody id="hBody"><tr><td colspan="4" style="text-align:center;padding:12px">-</td></tr></tbody></table>
+        </div>
+        <div class="pn">
+          <h3>KANAL ISLEMLERI</h3>
+          <div class="fr">
+            <div class="fl"><label>Kanal ID</label><input id="cId"/></div>
+            <div class="fl"><label>Konu</label><input id="cTopic"/></div>
+            <div class="fl"><label>Slowmode (sn)</label><input id="cSlow" type="number" value="0"/></div>
+          </div>
+          <div class="rw" style="margin-top:8px">
+            <button id="cInfo" class="g">BILGI</button><button id="cTopicSet" class="g">KONU AYARLA</button><button id="cSlowSet" class="g">SLOWMODE</button><button id="cTyping" class="g">YAZIYOR</button>
+          </div>
+          <div class="out" id="cOut">-</div>
+        </div>
+      </div>
+
+      <!-- ============ SES ============ -->
+      <div class="vw" id="v-ses">
+        <div class="pn">
+          <h3>SES KANALI</h3>
+          <div class="fr">
+            <div class="fl"><label>Guild ID</label><input id="vGuild"/></div>
+            <div class="fl"><label>Kanal ID</label><input id="vChan"/></div>
+          </div>
+          <div class="rw" style="margin-top:8px">
+            <button id="vJoin" class="p">KATIL</button><button id="vLeave" class="red">AYRIL</button>
+            <button id="vStay" class="g">24/7 KAL</button><button id="vMute" class="g">SELF MUTE</button><button id="vDeaf" class="g">SELF DEAF</button>
+          </div>
+          <div class="note">Ses baglantisi gateway op4 ile kurulur, istemci gibi gorunursun. 24/7 acikken dusunce tekrar baglanir.</div>
+        </div>
+        <div class="pn">
+          <h3>OTOMATIK SES KATILIM</h3>
+          <div class="fr">
+            <div class="fl"><label>Auto join guild ID</label><input id="vaGuild"/></div>
+            <div class="fl"><label>Auto join kanal ID</label><input id="vaChan"/></div>
+          </div>
+          <button id="vaSet" class="p w" style="margin-top:8px">OTOMATIK KATILIMI AC</button>
+        </div>
+      </div>
+
+      <!-- ============ ARAC ============ -->
+      <div class="vw" id="v-arac">
+        <div class="pn">
+          <h3>WHOIS</h3>
+          <div class="rw"><input id="wId" placeholder="kullanici id"/><button id="wGo" class="p">BAK</button><button id="wAv" class="g">AVATARI INDIR</button></div>
+          <div class="out" id="wOut">-</div>
         </div>
         <div class="pn">
           <h3>SNOWFLAKE CEVIRICI</h3>
-          <div class="fl"><label>ID</label><input id="uId" placeholder="ID yapistir"/></div>
-          <button id="uGo" class="w" style="margin-top:6px">HESAPLA</button>
-          <div class="note" id="uOut">-</div>
+          <div class="rw"><input id="sId" placeholder="id"/><button id="sGo" class="p">HESAPLA</button></div>
+          <div class="out" id="sOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>IZIN HESAPLAYICI</h3>
+          <div class="rw"><input id="pPerm" placeholder="izin degeri (sayi)"/><button id="pGo" class="p">COZ</button></div>
+          <div class="out" id="pOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>EMBED OLUSTURUCU</h3>
+          <div class="fr">
+            <div class="fl"><label>Kanal ID</label><input id="ebChan"/></div>
+            <div class="fl"><label>Baslik</label><input id="ebTitle" value="Baslik"/></div>
+            <div class="fl"><label>Renk</label><input id="ebColor" value="#5b6cff"/></div>
+          </div>
+          <div class="fl" style="margin-top:8px"><label>Aciklama</label><textarea id="ebDesc" style="min-height:50px"></textarea></div>
+          <button id="ebSend" class="p w" style="margin-top:8px">EMBED GONDER</button>
+        </div>
+        <div class="pn">
+          <h3>WEBHOOK GONDER</h3>
+          <div class="fl"><label>Webhook URL</label><input id="whUrl" placeholder="https://discord.com/api/webhooks/..."/></div>
+          <div class="fl" style="margin-top:8px"><label>Mesaj</label><input id="whMsg" placeholder="merhaba"/></div>
+          <button id="whSend" class="p w" style="margin-top:8px">GONDER</button>
+        </div>
+        <div class="pn">
+          <h3>TOKEN CHECKER</h3>
+          <div class="fl"><label>Tokenlar (satir satir)</label><textarea id="tkList" style="min-height:70px"></textarea></div>
+          <button id="tkGo" class="p w" style="margin-top:8px">KONTROL ET</button>
+          <div class="out" id="tkOut">-</div>
+        </div>
+        <div class="pn">
+          <h3>ID / ZAMAN / RENK</h3>
+          <div class="rw"><input id="uHex" value="#5b6cff" placeholder="#hex"/><button id="uHexGo" class="g">RGB/DEC</button><input id="uTs" placeholder="metin"/><button id="uTsGo" class="g">TIMESTAMP</button></div>
+          <div class="out" id="uOut">-</div>
         </div>
       </div>
 
-      <div class="vw" id="v-console">
+      <!-- ============ LOG ============ -->
+      <div class="vw" id="v-log">
         <div class="rw">
-          <button id="clrLog" class="g sm">TEMIZLE</button>
-          <button id="dlLog" class="g sm">JSON INDIR</button>
-          <button id="testAll" class="p sm">SISTEM TESTI</button>
+          <button id="lgClr" class="g sm">TEMIZLE</button>
+          <button id="lgExp" class="g sm">JSON INDIR</button>
+          <button id="lgTest" class="p sm">SISTEM TESTI</button>
         </div>
-        <div id="logwrap"><div id="logbox"></div></div>
+        <div id="lw"><div id="logbox"></div></div>
       </div>
 
     </div>
@@ -286,284 +422,160 @@ tr:hover td{color:var(--txt)}
 </div>
 
 <script>
-/* ============================================================
-   VENICE MULTI TOOL - Discord Self-Bot / 250 ozellik
-   ============================================================ */
+/* ===================================================================
+   VENICE MULTI TOOL - gercek calisan Discord self-bot araclari
+   =================================================================== */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const API='https://discord.com/api/v9';
 const GW='wss://gateway.discord.gg/?v=10&encoding=json';
+const CDN='https://cdn.discordapp.com';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LS={g:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},s:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 
-const S={
-  token:'',me:null,ws:null,seq:null,sid:null,hbTimer:null,hbSent:0,lat:0,alive:false,
-  guilds:new Map(),channels:new Map(),
-  stats:{msgs:0,events:0,tries:0,claims:0,joins:0,errors:0},
-  seenCodes:new Set(),hidden:[],logs:[],
-  joining:false,scanning:false,snipeQ:[],snipeBusy:false,
-  set:{snipeDelay:700,snipeBl:'',joinDelay:5200,maxGuilds:100,ar:[]}
-};
+const S={token:'',me:null,ws:null,seq:null,sid:null,hb:null,hbSent:0,lat:0,alive:false,
+  guilds:new Map(),channels:new Map(),dm:new Map(),
+  stats:{msgs:0,events:0,tries:0,claims:0,joins:0},
+  seen:new Set(),snipeQ:[],busy:false,hidden:[],logs:[],
+  pending:new Map(),voiceStay:null,
+  set:{snDelay:700,snBl:'',ar:[]}};
 
-/* ---------- 250 OZELLIK ---------- */
-const FEATURES=[];
-const F=(id,name,cat,desc,kind)=>FEATURES.push({id,name,cat,desc,kind:kind||'setting',on:false});
-F('token-login','Token ile giris','Hesap','User token ile hesaba baglanir','manual');
-F('token-save','Token kaydet','Hesap','Token localStorage da saklanir','setting');
-F('token-validate','Token dogrula','Hesap','GET /users/@me ile test','auto');
-F('profile-fetch','Profil cek','Hesap','Kullanici adi, ID, avatar','auto');
-F('avatar-view','Avatar goruntule','Hesap','Profil resmini ceker','setting');
-F('banner-view','Banner goruntule','Hesap','Profil bannerini ceker','setting');
-F('accent-color','Accent rengi','Hesap','Profil accent rengini okur','setting');
-F('badges','Rozet listesi','Hesap','Hesap rozetlerini listeler','setting');
-F('nitro-type','Nitro tespiti','Hesap','premium_type ile Nitro durumu','auto');
-F('account-age','Hesap yasi','Hesap','Snowflake ten acilis tarihi','manual');
-F('locale-detect','Dil tespiti','Hesap','Hesap locale bilgisi','setting');
-F('mfa-check','2FA kontrolu','Hesap','mfa_enabled durumunu okur','auto');
-F('multi-token','Coklu token','Hesap','Birden fazla token saklama','setting');
-F('token-switch','Hizli token degistir','Hesap','Tokenlar arasi gecis','setting');
-F('gw-connect','Gateway baglantisi','Baglanti','wss gateway e baglanir','auto');
-F('gw-heartbeat','Heartbeat','Baglanti','Otomatik heartbeat','auto');
-F('gw-resume','Oturum devami','Baglanti','Kopmada RESUME dener','auto');
-F('gw-reconnect','Oto yeniden baglan','Baglanti','Kopunca tekrar baglanir','auto');
-F('gw-latency','Gecikme olcumu','Baglanti','Heartbeat ACK suresi','auto');
-F('gw-compression','Sikistirma','Baglanti','Gateway payload ayari','setting');
-F('gw-intents','Intent ayari','Baglanti','Dinlenecek olaylar','setting');
-F('gw-presence','Presence gonder','Baglanti','Identify ile durum','auto');
-F('gw-super-props','Super properties','Baglanti','X-Super-Properties basligi','auto');
-F('gw-client-state','Client state','Baglanti','v10 client_state gonderir','setting');
-F('sniper-enable','SNIPER ANA ANAHTAR','Sniper','Tum sniper sistemini acar','auto');
-F('sniper-msg','Mesaj icerigi tara','Sniper','Mesaj metninde kod arar','auto');
-F('sniper-embed','Embed tara','Sniper','Embed alanlarinda kod arar','auto');
-F('sniper-field','Embed field tara','Sniper','Field value icinde kod arar','auto');
-F('sniper-footer','Embed footer tara','Sniper','Footer metninde kod arar','auto');
-F('sniper-desc','Embed aciklama tara','Sniper','Description icinde kod arar','auto');
-F('sniper-button','Component tara','Sniper','Buton metinlerini tarar','auto');
-F('sniper-raw','Ham metin regex','Sniper','16 karakterlik kodlari yakalar','auto');
-F('sniper-gift-link','discord.gift linki','Sniper','Klasik gift linklerini yakalar','auto');
-F('sniper-promos','promos.discord.com','Sniper','Promo linklerini yakalar','auto');
-F('sniper-webhook','Webhook mesajlari','Sniper','Webhook kaynakli kodlari tarar','auto');
-F('sniper-dm','DM lerde tara','Sniper','Ozel mesajlarda sniper aktif','auto');
-F('sniper-all-guilds','Tum sunucularda tara','Sniper','Izin listesi disinda da dinler','auto');
-F('sniper-delay','Insan gecikmesi','Sniper','Claim oncesi bekleme','setting');
-F('sniper-speed','Hiz modu','Sniper','Gecikmesiz claim','setting');
-F('sniper-queue','Redeem kuyrugu','Sniper','Kodlari siraya alip isler','auto');
-F('sniper-retry','Tekrar dene','Sniper','Basarisiz denemeyi tekrarlar','auto');
-F('sniper-429','Rate limit yonetimi','Sniper','429 da retry_after bekler','auto');
-F('sniper-dedupe','Tekrar onleme','Sniper','Ayni kodu iki kez denemez','auto');
-F('sniper-log','Snipe gecmisi','Sniper','Sonuclari kaydeder','auto');
-F('sniper-sound','Sesli uyari','Sniper','Snipe da bip calar','auto');
-F('sniper-stats','Snipe istatistigi','Sniper','Deneme/basari sayaci','auto');
-F('claim-auto','Otomatik claim','Claim','Bulunan kodu aninda kullanir','auto');
-F('claim-gift','Gift claim','Claim','Hediye kodlarini kullanir','auto');
-F('claim-promo','Promo claim','Claim','Promosyon kodlarini kullanir','auto');
-F('claim-browser-fallback','Tarayicida ac','Claim','Basarisizsa link acar','setting');
-F('claim-already','Alinmis tespiti','Claim','already redeemed ayirt eder','auto');
-F('claim-invalid','Gecersiz tespiti','Claim','Gecersiz kodlari isaretler','auto');
-F('claim-nitro-classic','Nitro turu ayrimi','Claim','Nitro / Classic ayrimi','auto');
-F('claim-boost','Boost hediyesi','Claim','Sunucu boost hediyelerini algilar','auto');
-F('claim-credit','Kredi algila','Claim','Oyun ve kredi hediyelerini algilar','auto');
-F('claim-result-log','Sonuc logu','Claim','Claim sonucunu loglar','auto');
-F('claim-webhook-notify','Webhook bildirimi','Claim','Sonucu webhook a yollar','setting');
-F('claim-history','Claim arsivi','Claim','Gecmisi kalici tutar','setting');
-F('join-enable','KATILIM ANA ANAHTAR','Katilim','Otomatik katilimi acar','manual');
-F('join-list-100','100 sunucu listesi','Katilim','Hazir free-nitro listesi','manual');
-F('join-sequential','Sirali katilma','Katilim','Tek tek, sirayla katilir','auto');
-F('join-delay','Katilma gecikmesi','Katilim','Sunucular arasi bekleme','setting');
-F('join-429-handle','Rate limit yonetimi','Katilim','429 da bekleyip devam eder','auto');
-F('join-never-leave','HICBIRINDEN CIKMA','Katilim','Uye olunan sunucu terk edilmez','auto');
-F('join-detect-joined','Zaten uyeyi atla','Katilim','Mevcut sunuculari atlar','auto');
-F('join-resolve-vanity','Vanity coz','Katilim','Kodlari invite e cevirir','auto');
-F('join-resolve-invite','Invite coz','Katilim','Link ve kodu ayristirir','auto');
-F('join-log','Katilim logu','Katilim','Basarili/basarisiz kaydi','auto');
-F('join-progress','Ilerleme cubugu','Katilim','Gorsel ilerleme','auto');
-F('join-cap-check','Limit kontrolu','Katilim','100/200 sinirini kontrol eder','auto');
-F('join-nitro-detect','Nitro varsa 200','Katilim','Nitro hesapta limit 200','auto');
-F('join-resume','Kaldigi yerden devam','Katilim','Denedigi kodlari hatirlar','setting');
-F('scan-hidden','GIZLI KANAL BUL','Tarayici','Gorunmeyen kanallari bulur','manual');
-F('scan-all-guilds','Tum sunuculari tara','Tarayici','Butun sunuculari dolasir','auto');
-F('scan-perm-calc','Izin simulasyonu','Tarayici','Rol/overwrite ile hesaplar','auto');
-F('scan-view-channel','VIEW_CHANNEL hesapla','Tarayici','Gorunurluk bitini cozer','auto');
-F('scan-read-test','Okuma testi','Tarayici','Izin olmasa da okumayi dener','auto');
-F('scan-archive','Arsiv/thread bul','Tarayici','Gizli thread leri listeler','auto');
-F('scan-empty','Bos kanal tespiti','Tarayici','Mesajsiz kanallari bulur','setting');
-F('scan-locked','Kilitli kanal tespiti','Tarayici','Kilitli kanallari bulur','setting');
-F('scan-nsfw','NSFW kanal tespiti','Tarayici','nsfw kanallari bulur','setting');
-F('scan-voice-hidden','Gizli ses kanali','Tarayici','Gorunmeyen ses kanallari','setting');
-F('scan-stage','Stage kanallari','Tarayici','Stage kanallarini tespit eder','setting');
-F('scan-forum','Forum kanallari','Tarayici','Forum kanallarini tespit eder','setting');
-F('scan-announce','Duyuru kanallari','Tarayici','Announcement kanallari','setting');
-F('scan-count','Kanal sayaci','Tarayici','Toplam/gizli sayi','auto');
-F('scan-export','Listeyi disa aktar','Tarayici','JSON indirir','manual');
-F('scan-deep','Derin tarama','Tarayici','Sayfalama ile tarama','setting');
-F('msg-send','Mesaj gonder','Mesaj','Kanal ID ile mesaj atar','manual');
-F('msg-edit','Mesaj duzenle','Mesaj','Kendi mesajini duzenler','manual');
-F('msg-delete','Mesaj sil','Mesaj','Tek mesaj siler','manual');
-F('msg-bulk-delete','Toplu sil','Mesaj','Coklu mesaji siler','manual');
-F('msg-purge','Purge','Mesaj','Son N mesaji temizler','manual');
-F('msg-reply','Alintili yanit','Mesaj','message_reference ile yanit','setting');
-F('msg-tts','TTS mesaj','Mesaj','Sesli okuma mesaji','setting');
-F('msg-silent','Sessiz mesaj','Mesaj','@silent oneki ekler','setting');
-F('msg-file','Dosya yukle','Mesaj','multipart gonderim','setting');
-F('msg-embed','Embed gonder','Mesaj','Zengin embed gonderir','setting');
-F('msg-forward','Mesaj ilet','Mesaj','Baska kanala iletir','manual');
-F('msg-pin','Sabitle','Mesaj','Mesaji pinler','manual');
-F('msg-history','Gecmis cek','Mesaj','Son mesajlari listeler','manual');
-F('msg-typing','Yaziyor goster','Mesaj','Typing eventi gonderir','setting');
-F('msg-delayed','Gecikmeli gonder','Mesaj','X ms sonra gonderir','setting');
-F('msg-split','Uzun mesaji bol','Mesaj','2000 karakterde boler','setting');
-F('ar-enable','OTO YANIT ANA ANAHTAR','OtoYanit','Kural motorunu acar','auto');
-F('ar-exact','Tam eslesme','OtoYanit','Mesaj tam esitse yanitlar','auto');
-F('ar-contains','Icerir','OtoYanit','Gecen kelimeye yanit verir','auto');
-F('ar-regex','Regex','OtoYanit','Regex desenine yanit verir','auto');
-F('ar-startswith','Ile baslar','OtoYanit','Onek eslesmesi','auto');
-F('ar-endswith','Ile biter','OtoYanit','Sonek eslesmesi','auto');
-F('ar-cooldown','Bekleme suresi','OtoYanit','Spam onleme','setting');
-F('ar-scope-guild','Sunucu kapsami','OtoYanit','Sadece secili sunucular','setting');
-F('ar-scope-channel','Kanal kapsami','OtoYanit','Sadece secili kanallar','setting');
-F('ar-scope-dm','DM kapsami','OtoYanit','DM lerde de yanitlar','auto');
-F('ar-random','Rastgele yanit','OtoYanit','| ile coklu yanit','auto');
-F('ar-log','Yanit logu','OtoYanit','Gonderilen yanitlari loglar','auto');
-F('pres-status','Durum ayarla','Presence','online/idle/dnd/invisible','manual');
-F('pres-activity','Aktivite ayarla','Presence','Oynuyor/Dinliyor/Izliyor','manual');
-F('pres-type','Aktivite tipi','Presence','Aktivite turunu secer','manual');
-F('pres-custom','Custom status','Presence','Ozel durum metni','setting');
-F('pres-emoji','Custom emoji','Presence','Durum emojisi','setting');
-F('pres-timer','Sure goster','Presence','Baslangic zamani','setting');
-F('pres-rotate','Donen presence','Presence','Durumlari dondurur','setting');
-F('pres-random','Rastgele presence','Presence','Rastgele aktivite','setting');
-F('pres-schedule','Zamanli presence','Presence','Saat bazli degisim','setting');
-F('pres-restore','Kapanista geri yukle','Presence','Onceki durumu saklar','setting');
-F('voice-join','Sese katil','Ses','Voice channel a baglanir','manual');
-F('voice-leave','Sesten ayril','Ses','Baglantiyi keser','manual');
-F('voice-mute','Sustur','Ses','Sunucu bazli mute','manual');
-F('voice-deaf','Sagirlastir','Ses','Sunucu bazli deaf','manual');
-F('voice-self-mute','Kendini sustur','Ses','self_mute','manual');
-F('voice-self-deaf','Kendini sagirlastir','Ses','self_deaf','manual');
-F('voice-status','Ses durumu','Ses','Bagli kanali gosterir','auto');
-F('voice-region','Bolge degistir','Ses','RTC bolgesi secer','setting');
-F('voice-ping','Ses ping','Ses','Gecikme olcer','setting');
-F('voice-hidden-join','Gizli ses kanalina gir','Ses','Izin hesaplayip girer','manual');
-F('fr-list','Arkadas listesi','Arkadas','Tum arkadaslari ceker','manual');
-F('fr-add','Arkadas ekle','Arkadas','Istek atar','manual');
-F('fr-remove','Arkadas sil','Arkadas','Arkadasligi kaldirir','manual');
-F('fr-accept','Istek kabul et','Arkadas','Bekleyen istegi kabul eder','manual');
-F('fr-pending','Bekleyen istekler','Arkadas','Istekleri listeler','manual');
-F('fr-blocked','Engellenenler','Arkadas','Engel listesi','manual');
-F('fr-search','Arkadas ara','Arkadas','Listede arama','manual');
-F('fr-mutual','Ortak sunucu','Arkadas','Ortak sunuculari bulur','setting');
-F('fr-note','Arkadas notu','Arkadas','Not ekler','setting');
-F('fr-export','Listeyi disa aktar','Arkadas','JSON indirir','manual');
-F('dm-open','DM ac','DM','Kullanici ile DM acar','manual');
-F('dm-send','DM gonder','DM','Ozel mesaj yollar','manual');
-F('dm-list','DM listesi','DM','DM kanallarini listeler','manual');
-F('dm-group','Grup DM','DM','Grup mesajlarini listeler','manual');
-F('dm-call','Arama baslat','DM','Sesli/göruntulu arama','setting');
-F('dm-read','Okundu isaretle','DM','Kanali okundu yapar','manual');
-F('dm-pin','DM sabitle','DM','DM i pinler','manual');
-F('dm-export','DM disa aktar','DM','Konusmayi indirir','manual');
-F('react-add','Tepki ekle','Tepki','Mesaja emoji ekler','manual');
-F('react-remove','Tepki kaldir','Tepki','Tepkiyi siler','manual');
-F('react-custom','Custom emoji','Tepki','Sunucu emojisi kullanir','setting');
-F('react-unicode','Unicode emoji','Tepki','Standart emoji kullanir','setting');
-F('react-auto','Oto tepki','Tepki','Yeni mesajlara oto tepki','auto');
-F('react-blacklist','Tepki kara listesi','Tepki','Bazi kanallari atlar','setting');
-F('react-random','Rastgele tepki','Tepki','Havuzdan secer','auto');
-F('react-count','Tepki sayaci','Tepki','Tepkileri sayar','setting');
-F('th-list','Thread listesi','Thread','Aktif thread leri listeler','manual');
-F('th-create','Thread olustur','Thread','Yeni thread acar','manual');
-F('th-join','Thread e katil','Thread','Thread uyeligi','manual');
-F('th-archive','Arsivi listele','Thread','Arsivlenmis thread ler','manual');
-F('th-hidden','Gizli thread bul','Thread','Izin disi thread leri bulur','auto');
-F('th-forum-post','Foruma post at','Thread','Foruma konu acar','manual');
-F('role-list','Rol listesi','Sunucu','Sunucu rollerini ceker','manual');
-F('role-perms','Rol izinleri','Sunucu','Izin bitlerini cozer','manual');
-F('role-color','Rol rengi','Sunucu','Rol renklerini okur','setting');
-F('role-hoist','Rol siralama','Sunucu','Hiyerarsiye gore listeler','setting');
-F('guild-info','Sunucu bilgisi','Sunucu','Detayli sunucu verisi','manual');
-F('guild-icon','Sunucu ikonu','Sunucu','Ikon URL i uretir','setting');
-F('guild-banner','Sunucu banneri','Sunucu','Banner URL i uretir','setting');
-F('guild-members','Uye sayisi','Sunucu','approximate_member_count','manual');
-F('guild-owner','Sunucu sahibi','Sunucu','Sahip bilgisi','setting');
-F('guild-features','Sunucu ozellikleri','Sunucu','features dizisi','setting');
-F('search-message','Mesaj ara','Arama','Sunucuda mesaj arama','manual');
-F('search-user','Kullanici ara','Arama','Kullanici arar','manual');
-F('search-channel','Kanal ara','Arama','Kanal adi filtreler','manual');
-F('search-guild','Sunucu ara','Arama','Sunucularda arama','manual');
-F('filter-attr','Ek filtre','Arama','has:link/embed/file','setting');
-F('filter-date','Tarih filtresi','Arama','before/after','setting');
-F('filter-author','Yazar filtresi','Arama','author_id filtresi','setting');
-F('filter-save','Filtre kaydet','Arama','Filtreleri saklar','setting');
-F('wh-create','Webhook olustur','Webhook','Kanala webhook kurar','manual');
-F('wh-send','Webhook gonder','Webhook','Webhook ile mesaj','manual');
-F('wh-list','Webhook listesi','Webhook','Kanal webhooklari','manual');
-F('wh-delete','Webhook sil','Webhook','Webhook kaldirir','manual');
-F('wh-github','GitHub format','Webhook','Embed formatli bildirim','setting');
-F('wh-snipe-alert','Snipe uyarisi','Webhook','Sonucu webhook a yollar','setting');
-F('log-console','Konsol logu','Log','Olaylari panelde gosterir','auto');
-F('log-file','Dosya logu','Log','localStorage a yazar','setting');
-F('log-export','JSON disa aktar','Log','Loglari indirir','manual');
-F('log-clear','Log temizle','Log','Konsolu temizler','manual');
-F('stat-messages','Mesaj sayaci','Log','Gelen mesajlari sayar','auto');
-F('stat-events','Olay sayaci','Log','Gateway olaylarini sayar','auto');
-F('stat-snipes','Snipe sayaci','Log','Basarili snipe sayisi','auto');
-F('stat-joins','Katilim sayaci','Log','Katilinan sunucu sayisi','auto');
-F('stat-uptime','Calisma suresi','Log','Uptime gosterir','auto');
-F('stat-chart','Canli grafik','Log','Olay hizi grafigi','setting');
-F('sec-token-hide','Token gizle','Guvenlik','Inputu maskeler','setting');
-F('sec-token-copy','Token kopyala','Guvenlik','Panoya kopyalar','manual');
-F('sec-backup','Ayar yedegi','Guvenlik','Ayarlari JSON indirir','manual');
-F('sec-restore','Ayar geri yukle','Guvenlik','Yedekten yukler','manual');
-F('sec-guild-backup','Sunucu listesi yedegi','Guvenlik','Uyelikleri kaydeder','setting');
-F('sec-blacklist','Kara liste','Guvenlik','Engelli sunucu/kanal','setting');
-F('sec-safe-mode','Guvenli mod','Guvenlik','Sadece okuma','setting');
-F('sec-reset','Tam sifirla','Guvenlik','Tum veriyi temizler','manual');
-F('ui-dark','Koyu tema','Arayuz','Varsayilan tema','setting');
-F('ui-light','Acik tema','Arayuz','Aydinlik tema','setting');
-F('ui-midnight','Gece yarisi','Arayuz','Ekstra koyu tema','setting');
-F('ui-accent','Accent rengi','Arayuz','Vurgu rengi','setting');
-F('ui-compact','Kompakt mod','Arayuz','Yogun yerlesim','setting');
-F('ui-anim','Animasyonlar','Arayuz','Gecis efektleri','setting');
-F('ui-sound','Arayuz sesi','Arayuz','Tik/bip sesleri','setting');
-F('ui-keybind','Kisayollar','Arayuz','Klavye kisayollari','setting');
-F('ui-fullscreen','Tam ekran','Arayuz','Tam ekrana gecis','manual');
-F('ui-lang','Dil TR/EN','Arayuz','Arayuz dili','setting');
-F('net-timeout','Istek zaman asimi','Ag','AbortController timeout','setting');
-F('net-proxy','Proxy destegi','Ag','Proxy URL kullanimi','setting');
-F('net-ua','User-Agent ayari','Ag','Ozel UA gonderir','setting');
-F('net-retry','Otomatik tekrar','Ag','Hata halinde retry','setting');
-F('net-cache','Yanit onbellegi','Ag','Istekleri onbellekler','setting');
-F('net-parallel','Paralel istek','Ag','Es zamanli havuz','setting');
-F('hc-enable','GIZLI KANAL MODU','GizliKanal','Ana anahtar','manual');
-F('hc-perm-sim','Izin simule et','GizliKanal','Rol/overwrite ile hesaplar','auto');
-F('hc-bypass-read','Okuma bypass','GizliKanal','Izin yoksa da dener','auto');
-F('hc-list','Gizli kanal listesi','GizliKanal','Bulunanlari listeler','auto');
-F('hc-open','Tarayicida ac','GizliKanal','Kanal linkini acar','manual');
-F('hc-watch','Gizli kanal izleme','GizliKanal','Yeni mesajlari izler','setting');
-F('hc-export','Listeyi indir','GizliKanal','JSON cikti','manual');
-F('hc-notify','Yeni kanal bildirimi','GizliKanal','Yeni kanalda uyarir','setting');
-F('notif-desktop','Masaustu bildirimi','Bildirim','Notification API','auto');
-F('notif-sound','Bildirim sesi','Bildirim','Bip calar','auto');
-F('notif-mention','Mention bildirimi','Bildirim','Etiketlenince uyarir','auto');
-F('notif-keyword','Kelime bildirimi','Bildirim','Anahtar kelime uyarisi','setting');
-F('util-snowflake','Snowflake cevirici','Arac','ID den tarih hesaplar','manual');
-F('util-color','Renk araci','Arac','Hex/RGB cevirir','manual');
-F('util-timestamp','Zaman damgasi','Arac','Timestamp uretir','manual');
-F('util-perm-calc','Izin hesaplayici','Arac','Bit alani cozer','manual');
-F('util-emoji-steal','Emoji cal','Arac','Emojiyi kaydeder','manual');
-F('util-json','JSON formatla','Arac','Guzel JSON cikti','manual');
-F('exp-v9-api','v9 API yedegi','Deneysel','Bazi cagrilarda v9','setting');
-F('exp-gw-v10','Gateway v10','Deneysel','En yeni gateway','setting');
-F('exp-multi-acc','Coklu hesap','Deneysel','Paralel baglanti','setting');
-F('exp-auto-quest','Oto quest/orb','Deneysel','Orb gorevlerini toplar','setting');
-F('exp-stock-watch','Stok izleyici','Deneysel','Stok degisimini izler','setting');
-F('exp-beta','Beta ozellikler','Deneysel','Yeni test ozellikleri','setting');
+/* ---------------- OZELLIK REGISTRY (gercek) ---------------- */
+const FEATS=[];
+const F=(id,name,view,desc)=>FEATS.push({id,name,view,desc,on:false});
+/* hesap */
+F('token-login','Token ile giris','hesap','user token ile baglanir');
+F('token-info','Token cozumle','hesap','tokendan kullanici id okur');
+F('account-info','Hesap bilgisi','hesap','profil, rozet, nitro durumu');
+F('hypesquad-bravery','HypeSquad Bravery','hesap','house 1 gonderir');
+F('hypesquad-brilliance','HypeSquad Brilliance','hesap','house 2 gonderir');
+F('hypesquad-balance','HypeSquad Balance','hesap','house 3 gonderir');
+F('hypesquad-clear','HypeSquad temizle','hesap','house kaldirir');
+F('bio-set','Bio degistir','hesap','PATCH /users/@me bio');
+F('username-set','Kullanici adi degistir','hesap','PATCH /users/@me username');
+F('avatar-set','Avatar degistir','hesap','base64 avatar yukler');
+F('banner-set','Banner degistir','hesap','nitro banner yukler');
+F('avatar-del','Avatar sil','hesap','avatar null yapar');
+F('accent-set','Accent rengi','hesap','profil accent rengi');
+F('status-set','Durum degistir','hesap','online/idle/dnd/invisible');
+F('custom-status','Custom status','hesap','metin + emoji durum');
+F('presence-type','Aktivite tipi','hesap','oynuyor/yayinda/dinliyor');
+F('account-age','Hesap yasi','hesap','snowflake ten tarih');
+F('badges','Rozet listesi','hesap','flag bitlerini cozer');
+F('connections','Bagli hesaplar','hesap','GET /users/@me/connections');
+/* sniper */
+F('sniper-enable','Sniper ana anahtar','sniper','tum sniper sistemini acar');
+F('sniper-msg','Mesaj icerigi','sniper','mesaj metninde kod arar');
+F('sniper-embed','Embed tara','sniper','embed alanlarinda kod arar');
+F('sniper-field','Embed field','sniper','field value icinde arar');
+F('sniper-footer','Embed footer','sniper','footer metninde arar');
+F('sniper-desc','Embed aciklama','sniper','description icinde arar');
+F('sniper-button','Component','sniper','buton metinlerini tarar');
+F('sniper-raw','Ham 16 karakter','sniper','nitro kelimesi gecen metinde');
+F('sniper-gift','discord.gift','sniper','gift linklerini yakalar');
+F('sniper-promos','promos.discord.com','sniper','promo linklerini yakalar');
+F('sniper-dm','DM lerde tara','sniper','ozel mesajlarda sniper');
+F('sniper-webhook','Webhook mesajlari','sniper','webhook kaynaklilar');
+F('sniper-429','Rate limit yonetimi','sniper','retry_after bekler');
+F('sniper-dedupe','Tekrar onleme','sniper','ayni kodu iki kez denemez');
+F('sniper-log','Snipe gecmisi','sniper','sonuclari tabloya yazar');
+F('sniper-sound','Sesli uyari','sniper','snipe da bip');
+F('sniper-desktop','Masaustu bildirimi','sniper','notification gonderir');
+F('sniper-speed','Hiz modu','sniper','gecikmesiz claim');
+/* oto */
+F('giveaway-join','Giveaway joiner','oto','cekilislere otomatik katilir');
+F('giveaway-emoji','Giveaway emoji','oto','emoji ile katilim');
+F('giveaway-keyword','Giveaway kelime','oto','anahtar kelime filtresi');
+F('ghost-ping','Ghost ping dedektoru','oto','silinen etiketleri yakalar');
+F('ghost-ping-log','Ghost ping logu','oto','sonucu panele yazar');
+F('auto-reply','Oto yanit motoru','oto','kural bazli yanit');
+F('auto-reply-regex','Oto yanit regex','oto','regex destegi');
+F('auto-reply-log','Oto yanit logu','oto','gonderilenleri loglar');
+F('auto-react','Oto tepki','oto','yeni mesajlara tepki');
+F('auto-react-pool','Tepki havuzu','oto','rastgele emoji secer');
+F('keyword-notify','Kelime bildirimi','oto','anahtar kelime uyarisi');
+F('mention-notify','Mention bildirimi','oto','etiketlenince uyarir');
+F('dm-log','DM logu','oto','gelen dm leri loglar');
+F('message-log','Mesaj logu','oto','tum mesajlari loglar');
+/* toplu */
+F('massdm-friends','Toplu DM (arkadas)','toplu','tum arkadaslara dm');
+F('massdm-dms','Toplu DM (kanallar)','toplu','mevcut dm kanallarina');
+F('massdm-members','Toplu DM (uye)','toplu','sunucu uyelerine dm');
+F('massdm-delay','DM gecikmesi','toplu','spam korumasi');
+F('massmsg','Toplu mesaj','toplu','coklu kanala mesaj');
+F('mass-purge','Toplu sil / purge','toplu','kanal temizleme');
+F('mass-purge-filter','Purge filtresi','toplu','ben/bot/herkes filtresi');
+F('mass-react','Toplu tepki','toplu','mesaja tepki atar');
+F('mass-friend','Toplu arkadas istegi','toplu','liste halinde istek');
+F('mass-leave','Toplu sunucudan cik','toplu','whitelist destekli');
+F('mass-close-dm','Toplu DM kapat','toplu','tum dm leri kapatir');
+F('mass-mark-read','Tumunu okundu yap','toplu','ack gonderir');
+F('mass-nick','Toplu nick degistir','toplu','sunucuda nick ayarlar');
+F('nuker','Nuker','toplu','cik + dm kapat + webhook sil');
+F('nuker-keep','Nuker whitelist','toplu','korunacak sunucular');
+F('panic','Panik butonu','toplu','tek tikla her seyi birak');
+/* sunucu */
+F('guild-info','Sunucu bilgisi','sunucu','detayli guild verisi');
+F('guild-channels','Kanal listesi','sunucu','tum kanallari listeler');
+F('guild-roles','Rol listesi','sunucu','rolleri ve izinleri');
+F('guild-emojis','Emoji listesi','sunucu','emojileri + indirme');
+F('guild-stickers','Sticker listesi','sunucu','stickerlari listeler');
+F('guild-webhooks','Webhook listesi','sunucu','kanal webhooklari');
+F('guild-members','Uye arama','sunucu','uye arar');
+F('guild-membercount','Uye sayisi','sunucu','with_counts');
+F('guild-icon','Sunucu ikonu','sunucu','ikon url i');
+F('guild-banner','Sunucu banneri','sunucu','banner url i');
+F('invite-create','Davet olustur','sunucu','kanal daveti uretir');
+F('invite-info','Davet coz','sunucu','davet bilgisini ceker');
+F('channel-info','Kanal bilgisi','sunucu','kanal detayi');
+F('channel-topic','Kanal konusu','sunucu','topic degistirir');
+F('channel-slowmode','Slowmode','sunucu','yavas mod ayari');
+F('channel-typing','Yaziyor goster','sunucu','typing eventi');
+F('hidden-scan','Gizli kanal tarama','sunucu','izin simulasyonu ile');
+F('hidden-read','Gizli kanal okuma','sunucu','izin olmasa da okur');
+F('hidden-export','Gizli kanal export','sunucu','json indirir');
+/* ses */
+F('voice-join','Sese katil','ses','op4 ile voice join');
+F('voice-leave','Sesten ayril','ses','baglantiyi keser');
+F('voice-247','24/7 voice','ses','dusunce tekrar baglanir');
+F('voice-self-mute','Self mute','ses','kendini susturur');
+F('voice-self-deaf','Self deaf','ses','kendini sagirlastirir');
+F('voice-auto','Otomatik ses katilim','ses','belirlenen kanala girer');
+F('voice-hidden','Gizli ses kanali','ses','izin hesaplayip girer');
+/* arac */
+F('whois','Whois','arac','kullanici bilgisi');
+F('avatar-download','Avatar indir','arac','profil resmini indirir');
+F('snowflake','Snowflake cevirici','arac','id den tarih hesaplar');
+F('perm-calc','Izin hesaplayici','arac','bit alanini cozer');
+F('embed-builder','Embed olusturucu','arac','embed gonderir');
+F('webhook-send','Webhook gonder','arac','webhook ile mesaj');
+F('token-checker','Token checker','arac','coklu token dogrular');
+F('color-convert','Renk cevirici','arac','hex/rgb/dec');
+F('timestamp-gen','Timestamp uretici','arac','discord zaman damgasi');
+F('raw-json','JSON cikti','arac','ham yanit goruntuleme');
+/* log */
+F('log-console','Konsol','log','olaylari gosterir');
+F('log-export','Log indir','log','json olarak indirir');
+F('log-clear','Log temizle','log','konsolu temizler');
+F('stat-messages','Mesaj sayaci','log','gelen mesajlar');
+F('stat-events','Olay sayaci','log','gateway olaylari');
+F('stat-snipes','Snipe sayaci','log','basarili snipe');
+F('stat-joins','Katilim sayaci','log','katilinan sunucu');
+F('stat-uptime','Uptime','log','calisma suresi');
+F('gw-latency','Ping olcumu','log','heartbeat ack suresi');
+F('gw-reconnect','Oto yeniden baglan','log','kopunca baglanir');
+/* deneysel */
+F('quest-enroll','Quest enroll','arac','orb gorevine kayit');
+F('quest-claim','Quest odul al','arac','quest odulunu alir');
+F('guild-bans','Ban listesi','sunucu','banlari listeler');
+F('id-copy','ID kopyala','arac','panoya kopyalar');
+F('auto-bump','Oto bump','oto','bump mesajini yakalar');
 
-const FMAP=new Map(FEATURES.map(f=>[f.id,f]));
-const on=id=>{const f=FMAP.get(id);return !!(f&&f.on)};
+const FM=new Map(FEATS.map(f=>[f.id,f]));
+const on=id=>{const f=FM.get(id);return !!(f&&f.on)};
 
-/* ---------- 100 SUNUCU ---------- */
-const DEF_SERVERS=`minecraft|Minecraft
+/* ---------------- 100 SUNUCU ---------------- */
+const SERVERS=`minecraft|Minecraft
 fortnite|Fortnite
 valorant|VALORANT
 genshinimpact|Genshin Impact
@@ -662,142 +674,141 @@ manga|Manga
 myanimelist|MyAnimeList
 movies|Movies`;
 
-/* ---------- UTIL ---------- */
+/* ---------------- UTIL ---------------- */
 function b64(o){try{return btoa(unescape(encodeURIComponent(JSON.stringify(o))))}catch(e){return ''}}
 const SUPER=b64({os:'Windows',browser:'Chrome',device:'',system_locale:'tr-TR',
   browser_user_agent:navigator.userAgent,browser_version:'131.0.0.0',os_version:'10',
   referrer:'',referring_domain:'',referrer_current:'',referring_domain_current:'',
   release_channel:'stable',client_build_number:341000,client_event_source:null});
-
-function beep(f=880,d=90){
-  if(!on('ui-sound')&&!on('sniper-sound')&&!on('notif-sound'))return;
-  try{const c=new (window.AudioContext||window.webkitAudioContext)();
-  const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f;
-  o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.06,c.currentTime);
-  g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+d/1000);o.start();o.stop(c.currentTime+d/1000);}catch(e){}
-}
-function notify(t,b){ if(!on('notif-desktop'))return;
+function beep(f=880,d=90){try{const c=new(window.AudioContext||window.webkitAudioContext)();
+  const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f;o.connect(g);g.connect(c.destination);
+  g.gain.setValueAtTime(.06,c.currentTime);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+d/1000);
+  o.start();o.stop(c.currentTime+d/1000);}catch(e){}}
+function notify(t,b){if(!on('sniper-desktop')&&!on('mention-notify')&&!on('keyword-notify'))return;
   try{if(Notification.permission==='granted')new Notification(t,{body:b});
-  else if(Notification.permission!=='denied')Notification.requestPermission();}catch(e){} }
+  else if(Notification.permission!=='denied')Notification.requestPermission();}catch(e){}}
 
-/* ---------- LOG ---------- */
 function log(msg,type='info'){
   const t=new Date().toLocaleTimeString('tr-TR');
-  S.logs.push({t,msg,type}); if(S.logs.length>800)S.logs.shift();
-  const box=$('#logbox'); if(!box)return;
-  const el=document.createElement('div'); el.className='ln '+type;
-  el.innerHTML='<span class="lt">'+t+'</span><span class="lm">'+esc(msg)+'</span>';
-  box.prepend(el); while(box.children.length>700)box.lastChild.remove();
+  S.logs.push({t,msg,type}); if(S.logs.length>900)S.logs.shift();
+  const b=$('#logbox'); if(!b)return;
+  const e=document.createElement('div'); e.className='ln '+type;
+  e.innerHTML='<span class="lt">'+t+'</span><span class="lm">'+esc(msg)+'</span>';
+  b.prepend(e); while(b.children.length>800)b.lastChild.remove();
 }
+function out(sel,v){ const e=$(sel); if(e)e.textContent=typeof v==='string'?v:JSON.stringify(v,null,2); }
 
-/* ---------- API ---------- */
-async function api(path,opts={},retry=0){
+/* ---------------- API ---------------- */
+async function api(path,opts={},retry=0,token){
   const url=path.startsWith('http')?path:API+path;
-  const headers=Object.assign({
-    'Authorization':S.token,'Accept':'*/*','Origin':'https://discord.com',
+  const h=Object.assign({'Authorization':token||S.token,'Accept':'*/*','Origin':'https://discord.com',
     'Referer':'https://discord.com/channels/@me','X-Super-Properties':SUPER,
-    'X-Discord-Locale':'tr','X-Discord-Timezone':'Europe/Istanbul'
-  },opts.headers||{});
-  if(opts.body&&typeof opts.body==='string'&&!headers['Content-Type'])headers['Content-Type']='application/json';
-  let res;
-  try{ res=await fetch(url,{method:opts.method||'GET',headers,body:opts.body}); }
-  catch(e){ S.stats.errors++; throw {status:0,body:{message:'ag hatasi: '+e.message}}; }
-  if(res.status===429){
-    let ra=1; try{const j=await res.json();ra=(j.retry_after||1)}catch(e){}
-    if(retry<3){ log('429 -> '+Math.ceil(ra*1000)+'ms bekleniyor','warn'); await sleep(ra*1000+150); return api(path,opts,retry+1); }
+    'X-Discord-Locale':'tr','X-Discord-Timezone':'Europe/Istanbul'},opts.headers||{});
+  if(opts.body&&typeof opts.body==='string'&&!h['Content-Type'])h['Content-Type']='application/json';
+  let r;
+  try{ r=await fetch(url,{method:opts.method||'GET',headers:h,body:opts.body}); }
+  catch(e){ throw {status:0,body:{message:'ag hatasi: '+e.message}}; }
+  if(r.status===429){
+    let ra=1; try{ra=(await r.json()).retry_after||1}catch(e){}
+    if(retry<4){ await sleep(ra*1000+200); return api(path,opts,retry+1,token); }
     throw {status:429,body:{message:'rate limit'}};
   }
-  if(res.status===204)return null;
-  let body=null; const txt=await res.text();
+  if(r.status===204)return null;
+  const txt=await r.text(); let body=null;
   if(txt){ try{body=JSON.parse(txt)}catch(e){body=txt} }
-  if(!res.ok)throw {status:res.status,body};
+  if(!r.ok)throw {status:r.status,body};
   return body;
 }
 
-/* ---------- GATEWAY ---------- */
+/* ---------------- GATEWAY ---------------- */
 function connect(){
-  if(!S.token){log('Token gir','err');return}
+  if(!S.token)return log('Token gir','err');
   if(S.ws){try{S.ws.close()}catch(e){}}
   log('Gateway baglaniyor...','info');
   S.ws=new WebSocket(GW);
-  S.ws.onmessage=e=>{ try{handleGW(JSON.parse(e.data))}catch(err){log('GW hata: '+err.message,'err')} };
-  S.ws.onclose=ev=>{
-    S.alive=false; setSt(false);
-    log('Baglanti kapandi ('+ev.code+')','warn');
-    if(S.token&&on('gw-reconnect')){ setTimeout(connect,3000+Math.random()*2000); }
-  };
+  S.ws.onmessage=e=>{try{handle(JSON.parse(e.data))}catch(err){log('GW hata: '+err.message,'err')}};
+  S.ws.onclose=ev=>{ S.alive=false; setSt(false); log('Baglanti kapandi ('+ev.code+')','warn');
+    if(S.token&&on('gw-reconnect'))setTimeout(connect,3000+Math.random()*2000); };
   S.ws.onerror=()=>log('WebSocket hatasi','err');
 }
 function send(o){ if(S.ws&&S.ws.readyState===1)S.ws.send(JSON.stringify(o)); }
-function handleGW(p){
+function handle(p){
   S.stats.events++;
   if(p.s!=null)S.seq=p.s;
   switch(p.op){
     case 10:
-      clearInterval(S.hbTimer);
-      S.hbTimer=setInterval(()=>{S.hbSent=Date.now();send({op:1,d:S.seq})},p.d.heartbeat_interval);
+      clearInterval(S.hb);
+      S.hb=setInterval(()=>{S.hbSent=Date.now();send({op:1,d:S.seq})},p.d.heartbeat_interval);
       identify(); break;
     case 11: S.lat=Date.now()-S.hbSent; $('#pLat').textContent=S.lat+'ms'; break;
     case 1: send({op:1,d:S.seq}); break;
     case 7: send({op:6,d:{token:S.token,session_id:S.sid,seq:S.seq}}); break;
     case 9: S.sid=null;S.seq=null; setTimeout(identify,1500); break;
-    case 0: onEvent(p.t,p.d); break;
+    case 0: evt(p.t,p.d); break;
   }
 }
 function identify(){
-  send({op:2,d:{
-    token:S.token,capabilities:125,
+  send({op:2,d:{token:S.token,capabilities:125,
     properties:{os:'Windows',browser:'Chrome',device:'',system_locale:'tr-TR',
       browser_user_agent:navigator.userAgent,browser_version:'131.0.0.0',os_version:'10',
       referrer:'',referring_domain:'',release_channel:'stable',client_build_number:341000},
-    presence:{status:'online',since:0,activities:[],afk:false},
-    compress:false,
+    presence:{status:'online',since:0,activities:[],afk:false},compress:false,
     client_state:{guild_versions:{},highest_last_message_id:'0',read_state_version:0,
-      user_guild_settings_version:-1,user_settings_version:-1,private_channels_version:'0',api_code_version:0}
-  }});
+      user_guild_settings_version:-1,user_settings_version:-1,private_channels_version:'0',api_code_version:0}}});
 }
-function onEvent(t,d){
+function evt(t,d){
   if(on('log-console')&&t!=='TYPING_START')log('<< '+t,'dim');
-  switch(t){
-    case 'READY':
-      S.me=d.user; S.sid=d.session_id; S.alive=true; setSt(true);
-      log('HAZIR: '+d.user.username+' ('+d.user.id+')','ok');
-      $('#acc').innerHTML='<b>'+esc(d.user.username)+'</b> bagli';
-      (d.guilds||[]).forEach(g=>S.guilds.set(g.id,g));
-      upd(); break;
-    case 'GUILD_CREATE':
-      S.guilds.set(d.id,Object.assign(S.guilds.get(d.id)||{},d)); upd(); break;
-    case 'GUILD_DELETE':
-      S.guilds.delete(d.id); upd(); break;
-    case 'CHANNEL_CREATE': case 'CHANNEL_UPDATE': S.channels.set(d.id,d); break;
-    case 'CHANNEL_DELETE': S.channels.delete(d.id); break;
-    case 'MESSAGE_CREATE': onMessage(d); break;
+  if(t==='READY'){
+    S.me=d.user; S.sid=d.session_id; S.alive=true; setSt(true);
+    log('HAZIR: '+d.user.username+' ('+d.user.id+')','ok');
+    $('#acc').innerHTML='<b>'+esc(d.user.username)+'</b> bagli';
+    (d.guilds||[]).forEach(g=>S.guilds.set(g.id,g)); upd(); return;
   }
+  if(t==='GUILD_CREATE'){ S.guilds.set(d.id,Object.assign(S.guilds.get(d.id)||{},d)); upd(); return; }
+  if(t==='GUILD_DELETE'){ S.guilds.delete(d.id); upd(); return; }
+  if(t==='MESSAGE_CREATE')return msg(d);
+  if(t==='MESSAGE_DELETE')return del(d);
 }
-function setSt(a){ const p=$('#st'); p.classList.toggle('live',a); p.textContent=a?'BAGLI':'KAPALI'; }
-function upd(){
-  $('#pGuild').textContent=S.guilds.size;
-  $('#pSnipe').textContent=S.stats.claims;
-  $('#stTry').textContent=S.stats.tries; $('#stClaim').textContent=S.stats.claims;
-  $('#stSeen').textContent=S.seenCodes.size; $('#stQ').textContent=S.snipeQ.length;
-}
+function setSt(a){const p=$('#st');p.classList.toggle('live',a);p.textContent=a?'BAGLI':'KAPALI';}
+function upd(){ $('#pGuild').textContent=S.guilds.size; $('#pSnipe').textContent=S.stats.claims;
+  $('#sTry').textContent=S.stats.tries; $('#sClaim').textContent=S.stats.claims;
+  $('#sSeen').textContent=S.seen.size; $('#sQ').textContent=S.snipeQ.length; }
 
-/* ---------- MESAJ ---------- */
-let cd={};
-function onMessage(m){
+/* ---------------- MESAJ / SNIPER ---------------- */
+let cdT={};
+function msg(m){
   S.stats.msgs++; upd();
-  if(!m.author||(!m.content&&!m.embeds))return;
-  if(on('sniper-enable'))sniperScan(m);
-  if(on('ar-enable'))autoReply(m);
-  if(on('react-auto')&&m.guild_id)autoReact(m);
-  if(on('notif-mention')&&S.me&&m.mentions&&m.mentions.some(u=>u.id===S.me.id)){
-    notify('Etiketlendin',m.author.username+': '+m.content.slice(0,80)); beep(1100);
+  if(!m.author)return;
+  if(on('message-log'))log('MSG #'+m.channel_id+' '+m.author.username+': '+(m.content||'').slice(0,60),'dim');
+  if(!m.guild_id&&on('dm-log'))log('DM '+m.author.username+': '+(m.content||'').slice(0,60),'info');
+  if(S.me&&m.mentions&&m.mentions.some(u=>u.id===S.me.id)){
+    S.pending.set(m.id,{ch:m.channel_id,by:m.author.username,at:Date.now()});
+    if(on('mention-notify')){ notify('Etiketlendin',m.author.username); beep(1200); }
   }
+  if(on('sniper-enable'))sniper(m);
+  if(on('giveaway-join'))giveaway(m);
+  if(on('auto-reply'))reply(m);
+  if(on('auto-react')&&m.guild_id)react(m);
+  const kw=($('#noWord')||{}).value;
+  if(on('keyword-notify')&&kw&&m.content&&m.content.toLowerCase().includes(kw.toLowerCase())){
+    notify('Kelime: '+kw,m.content.slice(0,80)); beep(900);
+  }
+  if(on('auto-bump')&&m.author.bot&&/bump/i.test(m.content||''))log('BUMP mesaji: '+m.author.username,'warn');
 }
-function extractCodes(m){
-  const set=new Set();
-  const scan=t=>{ if(!t)return; const re=/(?:discord\.gift\/|discord\.com\/gifts\/|promos\.discord\.com\/)([A-Za-z0-9]{12,26})/gi; let x; while((x=re.exec(t)))set.add(x[1]); };
-  if(on('sniper-msg')||on('sniper-gift-link')||on('sniper-promos'))scan(m.content);
+function del(d){
+  if(!on('ghost-ping'))return;
+  const p=S.pending.get(d.id); if(!p)return;
+  S.pending.delete(d.id);
+  if(Date.now()-p.at>120000)return;
+  const t=new Date().toLocaleTimeString('tr-TR');
+  log('GHOST PING! '+p.by+' etiketleyip sildi ('+t+')','warn');
+  out('#gpOut','GHOST PING\nkim: '+p.by+'\nkanal: '+p.ch+'\nsaat: '+t);
+  beep(1500,180);
+}
+function codes(m){
+  const s=new Set();
+  const scan=t=>{if(!t)return;const re=/(?:discord\.gift\/|discord\.com\/gifts\/|promos\.discord\.com\/)([A-Za-z0-9]{12,26})/gi;let x;while((x=re.exec(t)))s.add(x[1])};
+  if(on('sniper-msg')||on('sniper-gift')||on('sniper-promos'))scan(m.content);
   if(on('sniper-embed')&&m.embeds)for(const e of m.embeds){
     if(on('sniper-desc'))scan(e.description);
     if(on('sniper-field')&&e.fields)for(const f of e.fields)scan(f.value);
@@ -806,66 +817,65 @@ function extractCodes(m){
   }
   if(on('sniper-button')&&m.components)scan(JSON.stringify(m.components));
   if(on('sniper-raw')&&m.content&&/nitro/i.test(m.content)){
-    const re=/\b([A-Za-z0-9]{16})\b/g; let x; while((x=re.exec(m.content)))set.add(x[1]);
+    const re=/\b([A-Za-z0-9]{16})\b/g;let x;while((x=re.exec(m.content)))s.add(x[1]);
   }
-  return [...set];
+  return [...s];
 }
-function sniperScan(m){
+function sniper(m){
   if(!m.guild_id&&!on('sniper-dm'))return;
   if(m.webhook_id&&!on('sniper-webhook'))return;
-  const codes=extractCodes(m); if(!codes.length)return;
-  const bl=(S.set.snipeBl||'').split(',').map(s=>s.trim()).filter(Boolean);
-  for(const c of codes){
-    if(bl.includes(c))continue;
-    if(on('sniper-dedupe')&&S.seenCodes.has(c))continue;
-    log('Kod yakalandi: '+c,'info');
-    S.snipeQ.push({code:c}); }
-  upd(); processQueue();
+  const cs=codes(m); if(!cs.length)return;
+  const bl=(S.set.snBl||'').split(',').map(x=>x.trim()).filter(Boolean);
+  for(const c of cs){ if(bl.includes(c)||S.seen.has(c))continue;
+    log('Kod yakalandi: '+c,'info'); S.snipeQ.push(c); }
+  upd(); queue();
 }
-async function processQueue(){
-  if(S.snipeBusy)return; S.snipeBusy=true;
-  while(S.snipeQ.length){
-    const it=S.snipeQ.shift(); upd();
-    await redeem(it.code);
-    await sleep(on('sniper-speed')?0:Number(S.set.snipeDelay));
-  }
-  S.snipeBusy=false; upd();
+async function queue(){
+  if(S.busy)return; S.busy=true;
+  while(S.snipeQ.length){ const c=S.snipeQ.shift(); upd(); await claim(c);
+    await sleep(on('sniper-speed')?0:Number(S.set.snDelay)); }
+  S.busy=false; upd();
 }
-async function redeem(code){
-  if(on('sniper-dedupe')&&S.seenCodes.has(code))return;
-  S.seenCodes.add(code); S.stats.tries++; upd();
+async function claim(code){
+  if(S.seen.has(code))return; S.seen.add(code); S.stats.tries++; upd();
   const t0=performance.now(); let res=null,err=null;
-  try{
-    try{ res=await api('/entitlement-gifts/'+code+'/redeem',{method:'POST',body:'{}'}); }
-    catch(e){ if(e.status===404)res=await api('/gifts/'+code+'/redeem',{method:'POST',body:'{}'}); else throw e; }
-  }catch(e){ err=e; }
-  const ms=Math.round(performance.now()-t0); let sonuc;
+  try{ try{res=await api('/entitlement-gifts/'+code+'/redeem',{method:'POST',body:'{}'});}
+       catch(e){ if(e.status===404)res=await api('/gifts/'+code+'/redeem',{method:'POST',body:'{}'}); else throw e; } }
+  catch(e){ err=e; }
+  const ms=Math.round(performance.now()-t0); let s;
   if(res){
     S.stats.claims++;
-    sonuc=res.subscription_plan?('NITRO ALINDI ('+(res.subscription_plan.name||'nitro')+')')
+    s=res.subscription_plan?('NITRO ALINDI ('+(res.subscription_plan.name||'nitro')+')')
       :res.library_application?('OYUN ALINDI ('+(res.library_application.name||'')+')'):'HEDIYE ALINDI';
-    log('SNIPE! '+code+' -> '+sonuc+' ['+ms+'ms]','ok');
-    beep(1400,140); notify('Nitro Sniper',sonuc+' - '+code);
-    if(on('wh-snipe-alert'))whSend('Snipe: '+sonuc+' | '+code+' | '+ms+'ms');
+    log('SNIPE! '+code+' -> '+s+' ['+ms+'ms]','ok');
+    if(on('sniper-sound'))beep(1400,150);
+    notify('Nitro Sniper',s+' - '+code);
   }else{
-    const msg=(err&&err.body&&(err.body.message||err.body.code))||(err?err.status:'?');
-    sonuc=String(msg).toLowerCase().includes('already')?'zaten alinmis'
-      :String(msg).toLowerCase().includes('unknown')?'gecersiz kod':('hata: '+msg);
-    log('  '+code+' -> '+sonuc,'warn');
-    if(on('claim-browser-fallback'))window.open('https://discord.gift/'+code,'_blank');
+    const mm=(err&&err.body&&(err.body.message||err.body.code))||(err?err.status:'?');
+    s=String(mm).toLowerCase().includes('already')?'zaten alinmis'
+      :String(mm).toLowerCase().includes('unknown')?'gecersiz kod':('hata: '+mm);
+    log('  '+code+' -> '+s,'warn');
   }
-  row('#snipeBody',[new Date().toLocaleTimeString('tr-TR'),code,sonuc,ms]);
+  if(on('sniper-log'))row('#snBody',[new Date().toLocaleTimeString('tr-TR'),code,s,ms]);
   upd();
 }
-function row(sel,cells){
-  const tb=$(sel); if(!tb)return;
+function row(sel,cells){ const tb=$(sel); if(!tb)return;
   if(tb.querySelector('td[colspan]'))tb.innerHTML='';
-  const tr=document.createElement('tr');
-  tr.innerHTML=cells.map(c=>'<td>'+esc(c)+'</td>').join('');
-  tb.prepend(tr);
-}
+  const tr=document.createElement('tr'); tr.innerHTML=cells.map(c=>'<td>'+esc(c)+'</td>').join(''); tb.prepend(tr); }
 
-/* ---------- OTO YANIT ---------- */
+/* ---------------- GIVEAWAY ---------------- */
+async function giveaway(m){
+  const keys=($('#gwKeys').value||'').toLowerCase().split(',').map(s=>s.trim()).filter(Boolean);
+  const txt=((m.content||'')+' '+(m.embeds||[]).map(e=>e.title+' '+e.description).join(' ')).toLowerCase();
+  const hasKey=keys.some(k=>txt.includes(k));
+  const emoji=$('#gwEmoji').value.trim()||'🎉';
+  const hasEmoji=m.reactions&&m.reactions.some(r=>r.emoji.name===emoji||(r.emoji.name||'').toLowerCase().includes('tada'));
+  if(!hasKey&&!hasEmoji)return;
+  try{ await api('/channels/'+m.channel_id+'/messages/'+m.id+'/reactions/'+encodeURIComponent(emoji)+'/@me',{method:'PUT'});
+    log('Giveaway katildi: '+(m.guild_id||'DM'),'ok'); }
+  catch(e){}
+}
+/* ---------------- OTO YANIT / TEPKI ---------------- */
 function parseRules(){
   return ($('#arRules').value||'').split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{
     const i=l.indexOf('=>'); if(i<0)return null;
@@ -878,289 +888,485 @@ function parseRules(){
     return {mode,left,rights:right.split('|').map(s=>s.trim()).filter(Boolean)};
   }).filter(Boolean);
 }
-function autoReply(m){
+function reply(m){
   if(S.me&&m.author.id===S.me.id)return;
-  if(!m.guild_id&&!on('ar-scope-dm'))return;
-  if(cd[m.channel_id]&&Date.now()<cd[m.channel_id])return;
+  if(cdT[m.channel_id]&&Date.now()<cdT[m.channel_id])return;
   for(const r of (S.set.ar||[])){
     let hit=false; const c=m.content||'';
     try{
-      if(r.mode==='exact')hit=on('ar-exact')&&c===r.left;
-      else if(r.mode==='contains')hit=on('ar-contains')&&c.includes(r.left);
-      else if(r.mode==='start')hit=on('ar-startswith')&&c.startsWith(r.left);
-      else if(r.mode==='end')hit=on('ar-endswith')&&c.endsWith(r.left);
-      else if(r.mode==='regex')hit=on('ar-regex')&&new RegExp(r.left,'i').test(c);
+      if(r.mode==='exact')hit=c===r.left;
+      else if(r.mode==='contains')hit=c.includes(r.left);
+      else if(r.mode==='start')hit=c.startsWith(r.left);
+      else if(r.mode==='end')hit=c.endsWith(r.left);
+      else if(r.mode==='regex'&&on('auto-reply-regex'))hit=new RegExp(r.left,'i').test(c);
     }catch(e){}
     if(hit&&r.rights.length){
-      const out=on('ar-random')?r.rights[Math.floor(Math.random()*r.rights.length)]:r.rights[0];
-      cd[m.channel_id]=Date.now()+3000;
-      setTimeout(()=>api('/channels/'+m.channel_id+'/messages',{method:'POST',body:JSON.stringify({content:out})})
-        .then(()=>{if(on('ar-log'))log('Oto yanit -> '+out,'ok')})
-        .catch(e=>log('Oto yanit hata: '+((e.body&&e.body.message)||e.status),'err')),500+Math.random()*700);
+      const o=r.rights[Math.floor(Math.random()*r.rights.length)];
+      cdT[m.channel_id]=Date.now()+3000;
+      setTimeout(()=>api('/channels/'+m.channel_id+'/messages',{method:'POST',body:JSON.stringify({content:o})})
+        .then(()=>{if(on('auto-reply-log'))log('Oto yanit -> '+o,'ok')}).catch(()=>{}),400+Math.random()*600);
       return;
     }
   }
 }
-function autoReact(m){
-  const p=['\u2705','\u{1F525}','\u{1F44D}','\u{1F389}','\u{1F440}'];
-  const e=p[Math.floor(Math.random()*p.length)];
+function react(m){
+  const pool=($('#rePool').value||'👍').split(',').map(s=>s.trim()).filter(Boolean);
+  const e=on('auto-react-pool')?pool[Math.floor(Math.random()*pool.length)]:pool[0];
   api('/channels/'+m.channel_id+'/messages/'+m.id+'/reactions/'+encodeURIComponent(e)+'/@me',{method:'PUT'}).catch(()=>{});
 }
 
-/* ---------- KATILIM ---------- */
-let SERVERS=[];
-function loadServers(){
-  const sv=LS.g('vmt_servers');
-  const raw=(sv&&sv.length)?sv.join('\n'):DEF_SERVERS;
-  $('#srvBox').value=raw;
-  SERVERS=raw.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{
-    const p=l.split('|');
-    return {code:p[0].trim().replace(/^https?:\/\/discord\.gg\//,''),name:(p[1]||p[0]).trim()};
-  }).filter(s=>s.code);
-  $('#srvCount').textContent=SERVERS.length;
-}
-async function autoJoin(){
-  if(S.joining){log('Katilim zaten calisiyor','warn');return}
-  if(!S.token){log('Once baglan','err');return}
-  S.joining=true; $('#joinState').value='CALISIYOR';
-  let cap=Number(S.set.maxGuilds)||100;
-  if(on('join-nitro-detect')&&S.me&&S.me.premium_type>0)cap=200;
-  log('KATILIM BASLADI - hedef '+SERVERS.length+' sunucu, limit '+cap,'ok');
-  log('Hicbir sunucudan cikilmayacak','dim');
-  let ok=0,bad=0;
-  for(let i=0;i<SERVERS.length;i++){
-    if(!S.joining)break;
-    if(S.guilds.size>=cap){log('Limit doldu ('+cap+'), katilim durdu','warn');break}
-    const s=SERVERS[i];
-    $('#joinProg').style.width=Math.round((i+1)/SERVERS.length*100)+'%';
-    $('#joinState').value='#'+(i+1)+' / '+SERVERS.length;
-    try{
-      await api('/invites/'+s.code,{method:'POST',body:'{}'});
-      S.stats.joins++; ok++;
-      log('KATILDI: '+s.name,'ok'); row('#joinBody',[i+1,s.name,s.code,'OK']);
-    }catch(e){
-      const msg=(e.body&&e.body.message)||e.status;
-      if(/already/i.test(String(msg))){ log('Zaten uye: '+s.name,'dim'); row('#joinBody',[i+1,s.name,s.code,'ZATEN']); }
-      else{ bad++; log('BASARISIZ: '+s.name+' -> '+msg,'err'); row('#joinBody',[i+1,s.name,s.code,'HATA']); }
+/* ---------------- TASK RUNNER ---------------- */
+let stop=false;
+function startTask(name){ stop=false; $('#taskStop').style.display='block'; $('#pTask').textContent=name; out('#taskOut',name+' basladi'); }
+function stopTask(){ stop=false; $('#taskStop').style.display='none'; $('#pTask').textContent='-'; }
+function prog(i,t,extra){ const b=$('#taskBar'); if(b)b.style.width=Math.round(i/t*100)+'%';
+  out('#taskOut',i+' / '+t+(extra?'\n'+extra:'')); }
+
+/* ---------------- TOPLU ISLEMLER ---------------- */
+async function massDM(){
+  const target=$('#mdmTarget').value, text=$('#mdmMsg').value, d=Number($('#mdmDelay').value)||1200;
+  if(!text)return log('Mesaj gir','err');
+  startTask('TOPLU DM');
+  let list=[];
+  try{
+    if(target==='friends'){
+      const r=await api('/users/@me/relationships');
+      list=r.filter(x=>x.type===1).map(x=>x.id);
+    }else if(target==='dms'){
+      const c=await api('/users/@me/channels');
+      list=c.filter(x=>x.type===1).map(x=>x.recipients[0].id);
+    }else{
+      const gid=$('#mdmGuild').value.trim(); if(!gid)return log('Guild ID gir','err');
+      let after='0';
+      for(let i=0;i<20;i++){
+        const m=await api('/guilds/'+gid+'/members?limit=1000&after='+after);
+        if(!m.length)break;
+        m.forEach(x=>{if(!x.user.bot&&x.user.id!==S.me.id)list.push(x.user.id)});
+        after=m[m.length-1].user.id;
+        if(m.length<1000)break;
+      }
     }
-    upd(); await sleep(Number(S.set.joinDelay)||5200);
+  }catch(e){ return log('Liste alinamadi: '+((e.body&&e.body.message)||e.status),'err'); }
+  log('Toplu DM: '+list.length+' hedef','ok');
+  let ok=0,bad=0;
+  for(let i=0;i<list.length;i++){
+    if(stop)break; prog(i+1,list.length,'gonderilen: '+ok);
+    try{
+      const ch=await api('/users/@me/channels',{method:'POST',body:JSON.stringify({recipient_id:list[i]})});
+      await api('/channels/'+ch.id+'/messages',{method:'POST',body:JSON.stringify({content:text})});
+      ok++;
+    }catch(e){ bad++; }
+    await sleep(d);
   }
-  S.joining=false; $('#joinState').value='BITTI';
-  log('KATILIM BITTI - yeni '+ok+', basarisiz '+bad+', toplam '+S.guilds.size,'ok');
+  log('Toplu DM bitti - ok '+ok+', hata '+bad,'ok'); stopTask();
+}
+async function massMsg(){
+  const chans=$('#mmChans').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const text=$('#mmMsg').value; if(!text)return log('Mesaj gir','err');
+  startTask('TOPLU MESAJ'); let ok=0;
+  for(let i=0;i<chans.length;i++){ if(stop)break; prog(i+1,chans.length);
+    try{ await api('/channels/'+chans[i]+'/messages',{method:'POST',body:JSON.stringify({content:text})}); ok++; }
+    catch(e){ log('Hata '+chans[i],'err'); }
+    await sleep(900);
+  }
+  log('Toplu mesaj bitti - '+ok+' kanal','ok'); stopTask();
+}
+async function purge(){
+  const ch=$('#pgChan').value.trim(), lim=Number($('#pgLimit').value)||200, flt=$('#pgFilter').value;
+  if(!ch)return log('Kanal ID gir','err');
+  startTask('PURGE'); let del=0, before=null;
+  while(del<lim&&!stop){
+    const q='/channels/'+ch+'/messages?limit=100'+(before?'&before='+before:'');
+    let msgs; try{ msgs=await api(q); }catch(e){ log('Hata','err'); break; }
+    if(!msgs.length)break;
+    before=msgs[msgs.length-1].id;
+    const ids=msgs.filter(m=>flt==='me'?m.author.id===S.me.id:flt==='bot'?m.author.bot:true).map(m=>m.id);
+    if(ids.length){
+      try{
+        if(ids.length===1)await api('/channels/'+ch+'/messages/'+ids[0],{method:'DELETE'});
+        else await api('/channels/'+ch+'/messages/bulk-delete',{method:'POST',body:JSON.stringify({messages:ids.slice(0,100)})});
+        del+=ids.length;
+      }catch(e){ log('Silme hata: '+((e.body&&e.body.message)||e.status),'err'); await sleep(1200); }
+    }
+    prog(del,lim,'silinen: '+del);
+    await sleep(700);
+  }
+  log('Purge bitti - '+del+' mesaj','ok'); stopTask();
+}
+async function massReact(){
+  const ch=$('#mrChan').value.trim(), ms=$('#mrMsg').value.trim(), em=$('#mrEmoji').value.trim();
+  if(!ch||!ms)return log('Kanal ve mesaj ID gir','err');
+  startTask('TOPLU TEPKI'); let ok=0;
+  const list=ms.split(/[\s,]+/).filter(Boolean);
+  for(let i=0;i<list.length;i++){ if(stop)break; prog(i+1,list.length);
+    try{ await api('/channels/'+ch+'/messages/'+list[i]+'/reactions/'+encodeURIComponent(em)+'/@me',{method:'PUT'}); ok++; }catch(e){}
+    await sleep(350);
+  }
+  log('Tepki bitti - '+ok,'ok'); stopTask();
+}
+async function massFriend(){
+  const names=$('#frList').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  startTask('ARKADAS ISTEGI'); let ok=0;
+  for(let i=0;i<names.length;i++){ if(stop)break; prog(i+1,names.length);
+    try{ await api('/users/@me/relationships',{method:'POST',body:JSON.stringify({username:names[i]})}); ok++; log('Istek: '+names[i],'ok'); }
+    catch(e){ log('Hata '+names[i]+': '+((e.body&&e.body.message)||e.status),'err'); }
+    await sleep(900);
+  }
+  log('Istek bitti - '+ok,'ok'); stopTask();
+}
+async function massLeave(){
+  const keep=($('#nkKeep').value||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const list=[...S.guilds.values()].filter(g=>!keep.includes(g.id));
+  startTask('SUNUCUDAN CIK'); let ok=0;
+  for(let i=0;i<list.length;i++){ if(stop)break; prog(i+1,list.length,list[i].name);
+    try{ await api('/users/@me/guilds/'+list[i].id,{method:'DELETE'}); ok++; S.guilds.delete(list[i].id); upd(); }
+    catch(e){ log('Hata '+list[i].name,'err'); }
+    await sleep(800);
+  }
+  log('Cikis bitti - '+ok+' sunucu','ok'); stopTask();
+}
+async function massCloseDM(){
+  startTask('DM KAPAT'); let ok=0;
+  const ch=await api('/users/@me/channels');
+  for(let i=0;i<ch.length;i++){ if(stop)break; prog(i+1,ch.length);
+    try{ await api('/channels/'+ch[i].id,{method:'DELETE'}); ok++; }catch(e){}
+    await sleep(700);
+  }
+  log('DM kapatildi - '+ok,'ok'); stopTask();
+}
+async function massRead(){
+  startTask('OKUNDU'); let ok=0;
+  const ch=await api('/users/@me/channels');
+  for(let i=0;i<ch.length;i++){ if(stop)break; prog(i+1,ch.length);
+    try{ await api('/channels/'+ch[i].id+'/messages/'+ch[i].last_message_id+'/ack',{method:'POST',body:'{}'}); ok++; }catch(e){}
+    await sleep(500);
+  }
+  log('Okundu - '+ok,'ok'); stopTask();
+}
+async function delWebhooks(){
+  startTask('WEBHOOK SIL'); let ok=0;
+  for(const g of S.guilds.values()){
+    if(stop)break;
+    let wh; try{ wh=await api('/guilds/'+g.id+'/webhooks'); }catch(e){ continue; }
+    for(const w of wh){ if(w.user&&w.user.id!==S.me.id)continue;
+      try{ await api('/webhooks/'+w.id,{method:'DELETE'}); ok++; }catch(e){} await sleep(400); }
+  }
+  log('Webhook silindi - '+ok,'ok'); stopTask();
+}
+async function panic(){
+  log('=== PANIK ===','warn');
+  await massLeave(); await massCloseDM();
+  log('Panik bitti. Toplam sunucu: '+S.guilds.size,'warn');
 }
 
-/* ---------- GIZLI KANAL ---------- */
-const VIEW=0x400n, ADMIN=0x8n;
-function computePerms(g,ch,member){
+/* ---------------- HESAP ---------------- */
+async function accInfo(){
+  if(!S.me)return log('Once baglan','err');
+  const u=S.me, ms=(BigInt(u.id)>>22n)+1420070400000n;
+  const houses=[]; if(u.flags&(1<<6))houses.push('Bravery'); if(u.flags&(1<<7))houses.push('Brilliance'); if(u.flags&(1<<8))houses.push('Balance');
+  out('#accOut',[
+    'kullanici : '+u.username+(u.discriminator&&u.discriminator!=='0'?'#'+u.discriminator:''),
+    'id        : '+u.id,
+    'global ad : '+(u.global_name||'-'),
+    'olusturma : '+new Date(Number(ms)).toLocaleString('tr-TR'),
+    'hesap yasi: '+Math.floor((Date.now()-Number(ms))/86400000)+' gun',
+    'nitro     : '+(u.premium_type>0?'var (tip '+u.premium_type+')':'yok'),
+    'hypesquad : '+(houses.join(', ')||'yok'),
+    '2fa       : '+(u.mfa_enabled?'acik':'kapali'),
+    'locale    : '+(u.locale||'-'),
+    'bayrak    : '+u.flags,
+    'email     : '+(u.email||'-'),
+    'telefon   : '+(u.phone||'-'),
+    'dogrulanmis: '+!!u.verified
+  ].join('\n'));
+  $('#bio').value=u.bio||''; $('#uname').value=u.username;
+}
+async function hs(id){
+  try{ await api('/hypesquad/online',{method:'POST',body:JSON.stringify({house_id:Number(id)})});
+    log('HypeSquad gonderildi: house '+id,'ok'); await refreshMe(); }
+  catch(e){ log('HypeSquad hata: '+((e.body&&e.body.message)||e.status),'err'); }
+}
+async function refreshMe(){ try{ S.me=await api('/users/@me'); accInfo(); }catch(e){} }
+async function patchMe(body,label){
+  try{ await api('/users/@me',{method:'PATCH',body:JSON.stringify(body)}); log(label+' guncellendi','ok'); await refreshMe(); }
+  catch(e){ log(label+' hata: '+((e.body&&e.body.message)||e.status),'err'); }
+}
+function fileToData(el,cb){ const f=el.files[0]; if(!f)return cb(null);
+  const r=new FileReader(); r.onload=()=>cb(r.result); r.readAsDataURL(f); }
+
+/* ---------------- SUNUCU ---------------- */
+async function gInfo(){
+  const id=$('#gId').value.trim(); if(!id)return;
+  try{ const g=await api('/guilds/'+id+'?with_counts=true');
+    out('#gOut',['ad        : '+g.name,'id        : '+g.id,'sahip     : '+g.owner_id,
+      'uye       : '+(g.approximate_member_count||'-'),'cevrimici : '+(g.approximate_presence_count||'-'),
+      'kanal     : '+(g.channels?g.channels.length:'-'),'rol       : '+(g.roles?g.roles.length:'-'),
+      'boost     : '+(g.premium_tier||0)+' (seviye)','olusturma : '+new Date(Number((BigInt(g.id)>>22n)+1420070400000n)).toLocaleString('tr-TR'),
+      'ikon      : '+(g.icon?CDN+'/icons/'+g.id+'/'+g.icon+'.png':'yok')].join('\n')); }
+  catch(e){ out('#gOut','hata: '+((e.body&&e.body.message)||e.status)); }
+}
+async function gList(what){
+  const id=$('#gId').value.trim(); if(!id)return log('Guild ID gir','err');
   try{
-    const roles=g.roles||[], ev=roles.find(r=>r.id===g.id);
-    if(!ev||!member)return null;
-    let p=BigInt(ev.permissions||0);
-    const mids=member.roles||[];
-    for(const rid of mids){const r=roles.find(x=>x.id===rid); if(r)p|=BigInt(r.permissions||0)}
+    if(what==='channels'){ const c=await api('/guilds/'+id+'/channels');
+      out('#gOut2',c.map(x=>'['+x.type+'] #'+x.name+'  '+x.id).join('\n')+' \ntoplam: '+c.length); }
+    if(what==='roles'){ const r=await api('/guilds/'+id+'/roles');
+      out('#gOut2',r.map(x=>x.name+'  '+x.id+'  perm:'+x.permissions).join('\n')); }
+    if(what==='emojis'){ const e=await api('/guilds/'+id+'/emojis');
+      out('#gOut2',e.map(x=>x.name+' :'+x.id+' '+(x.animated?'anim':'')).join('\n')+'\ntoplam: '+e.length); }
+    if(what==='stickers'){ const e=await api('/guilds/'+id+'/stickers');
+      out('#gOut2',e.map(x=>x.name+' '+x.id).join('\n')+'\ntoplam: '+e.length); }
+    if(what==='webhooks'){ const w=await api('/guilds/'+id+'/webhooks');
+      out('#gOut2',w.map(x=>x.name+' | kanal '+x.channel_id+' | '+x.id).join('\n')+'\ntoplam: '+w.length); }
+    if(what==='bans'){ const b=await api('/guilds/'+id+'/bans');
+      out('#gOut2',b.map(x=>x.user.username+' '+x.user.id).join('\n')+'\ntoplam: '+b.length); }
+  }catch(e){ out('#gOut2','hata: '+((e.body&&e.body.message)||e.status)); }
+}
+async function whois(){
+  const id=$('#wId').value.trim(); if(!id)return;
+  try{ const u=await api('/users/'+id);
+    out('#wOut',['kullanici : '+u.username+(u.discriminator&&u.discriminator!=='0'?'#'+u.discriminator:''),
+      'id        : '+u.id,'bot       : '+!!u.bot,'olusturma : '+new Date(Number((BigInt(u.id)>>22n)+1420070400000n)).toLocaleString('tr-TR'),
+      'avatar    : '+(u.avatar?CDN+'/avatars/'+u.id+'/'+u.avatar+'.png?size=256':'yok'),
+      'banner    : '+(u.banner?CDN+'/banners/'+u.id+'/'+u.banner+'.png':'yok')].join('\n')); }
+  catch(e){ out('#wOut','hata: '+((e.body&&e.body.message)||e.status)); }
+}
+const VIEW=0x400n,ADMIN=0x8n;
+function perms(g,ch,mem){
+  try{
+    const rs=g.roles||[],ev=rs.find(r=>r.id===g.id); if(!ev||!mem)return null;
+    let p=BigInt(ev.permissions||0); const mids=mem.roles||[];
+    for(const rid of mids){const r=rs.find(x=>x.id===rid);if(r)p|=BigInt(r.permissions||0)}
     if((p&ADMIN)===ADMIN)return ~0n;
     const ow=ch.permission_overwrites||[]; let a=0n,d=0n;
-    const eo=ow.find(o=>o.type===0&&o.id===g.id);
-    if(eo){a|=BigInt(eo.allow||0);d|=BigInt(eo.deny||0)}
-    for(const rid of mids){const o=ow.find(x=>x.type===0&&x.id===rid); if(o){a|=BigInt(o.allow||0);d|=BigInt(o.deny||0)}}
-    const mo=ow.find(o=>o.type===1&&o.id===member.user.id);
-    if(mo){a|=BigInt(mo.allow||0);d|=BigInt(mo.deny||0)}
+    const eo=ow.find(o=>o.type===0&&o.id===g.id); if(eo){a|=BigInt(eo.allow||0);d|=BigInt(eo.deny||0)}
+    for(const rid of mids){const o=ow.find(x=>x.type===0&&x.id===rid);if(o){a|=BigInt(o.allow||0);d|=BigInt(o.deny||0)}}
+    const mo=ow.find(o=>o.type===1&&o.id===mem.user.id); if(mo){a|=BigInt(mo.allow||0);d|=BigInt(mo.deny||0)}
     return (p&~d)|a;
   }catch(e){return null}
 }
 async function scanHidden(){
-  if(!S.token){log('Once baglan','err');return}
-  if(S.scanning)return;
-  S.scanning=true; S.hidden=[];
-  $('#scanBody').innerHTML='<tr><td colspan="4" style="text-align:center;padding:12px">taraniyor...</td></tr>';
-  const gl=[...S.guilds.values()]; let total=0,hid=0;
-  log('TARAMA BASLADI - '+gl.length+' sunucu','ok');
+  startTask('GIZLI KANAL'); S.hidden=[];
+  $('#hBody').innerHTML='<tr><td colspan="4" style="text-align:center;padding:12px">taraniyor...</td></tr>';
+  const gl=[...S.guilds.values()]; let tot=0,hid=0;
   for(let i=0;i<gl.length;i++){
-    const g=gl[i];
-    $('#scanProg').style.width=Math.round((i+1)/gl.length*100)+'%';
-    $('#scanInfo').textContent=g.name+' ('+(i+1)+'/'+gl.length+')';
-    let chs=null;
-    try{ chs=await api('/guilds/'+g.id+'/channels'); }catch(e){ await sleep(120); continue; }
+    if(stop)break; const g=gl[i];
+    $('#hBar').style.width=Math.round((i+1)/gl.length*100)+'%';
+    $('#hInfo').textContent=g.name+' ('+(i+1)+'/'+gl.length+')';
+    let chs; try{ chs=await api('/guilds/'+g.id+'/channels'); }catch(e){ await sleep(120); continue; }
     let mem=(g.members||[]).find(m=>m.user&&m.user.id===S.me.id);
     if(!mem){ try{ mem=await api('/guilds/'+g.id+'/members/'+S.me.id); }catch(e){ mem=null; } }
-    for(const c of chs){
-      total++;
-      const pm=computePerms(g,c,mem); if(pm===null)continue;
-      if((pm&VIEW)===0n){
-        hid++;
-        const o={guild:g.name,gid:g.id,id:c.id,name:c.name,type:c.type};
-        S.hidden.push(o); drawHidden(o);
+    for(const c of chs){ tot++;
+      const p=perms(g,c,mem); if(p===null)continue;
+      if((p&VIEW)===0n){ hid++;
+        const o={g:g.name,gid:g.id,id:c.id,n:c.name,t:c.type}; S.hidden.push(o);
+        const tb=$('#hBody'); if(tb.querySelector('td[colspan]'))tb.innerHTML='';
+        const tr=document.createElement('tr');
+        tr.innerHTML='<td>'+esc(o.g)+'</td><td>#'+esc(o.n)+'</td><td>'+o.t+'</td><td><button class="sm" data-h="'+o.gid+'/'+o.id+'">oku</button></td>';
+        tb.appendChild(tr);
       }
     }
-    await sleep(180);
+    await sleep(160);
   }
-  $('#scanInfo').textContent='BITTI - '+total+' kanal tarandi, '+hid+' gizli';
-  log('TARAMA BITTI - '+total+' kanal, '+hid+' gizli','ok');
-  if(hid){beep(1000,120); notify('Gizli Kanal',hid+' kanal bulundu');}
-  S.scanning=false;
-}
-function tname(t){return {0:'metin',2:'ses',4:'kategori',5:'duyuru',13:'stage',15:'forum',16:'medya'}[t]||('tip'+t)}
-function drawHidden(h){
-  const tb=$('#scanBody'); if(!tb)return;
-  if(tb.querySelector('td[colspan]'))tb.innerHTML='';
-  $('#hidCount').textContent=S.hidden.length;
-  const tr=document.createElement('tr');
-  tr.innerHTML='<td>'+esc(h.guild)+'</td><td class="mono">#'+esc(h.name)+'</td><td>'+tname(h.type)+'</td>'+
-    '<td><button class="sm" data-open="'+h.gid+'/'+h.id+'">ac</button></td>';
-  tb.appendChild(tr);
-}
-async function readHidden(cid){
-  try{
-    const m=await api('/channels/'+cid+'/messages?limit=1');
-    log(m&&m.length?('OKUMA OK -> #'+cid+' | "'+(m[0].content||'').slice(0,60)+'"'):('Bos kanal -> '+cid), m&&m.length?'ok':'info');
-  }catch(e){ log('Okuma reddedildi -> '+cid,'warn'); }
+  $('#hInfo').textContent='BITTI - '+tot+' kanal, '+hid+' gizli';
+  log('Tarama bitti - '+tot+' kanal, '+hid+' gizli','ok'); stopTask();
 }
 
-/* ---------- WEBHOOK ---------- */
-let WH='';
-async function whSend(c){ if(!WH)return;
-  try{ await fetch(WH,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:c})}); }catch(e){} }
-
-/* ---------- UI ---------- */
-let cat='TUMU';
-function grid(){
-  const q=($('#search').value||'').toLowerCase(); const g=$('#grid'); g.innerHTML='';
-  let n=0;
-  FEATURES.forEach((f,i)=>{
-    if(cat!=='TUMU'&&f.cat!==cat)return;
-    if(q&&!(f.name+' '+f.desc+' '+f.cat+' '+f.id).toLowerCase().includes(q))return;
-    n++;
-    const d=document.createElement('div');
-    d.className='fc'+(f.on?' o':'');
-    d.innerHTML='<div class="fh"><div style="flex:1"><div class="fn">'+esc(f.name)+'</div>'+
-      '<div class="fi">'+String(i+1).padStart(3,'0')+' / '+esc(f.id)+'</div></div>'+
-      '<label class="tg"><input type="checkbox" '+(f.on?'checked':'')+' data-t="'+f.id+'"/><i></i></label></div>'+
-      '<div class="fd">'+esc(f.desc)+'</div>'+
-      '<div class="fm"><span class="cp">'+esc(f.cat)+'</span><span class="cp">'+
-      (f.kind==='auto'?'OTOMATIK':f.kind==='manual'?'MANUEL':'AYAR')+'</span></div>';
-    g.appendChild(d);
-  });
-  $('#pFeat').textContent=n+'/'+FEATURES.length;
-}
+/* ---------------- UI ---------------- */
+const NAV=[['hesap','HESAP'],['sniper','SNIPER'],['oto','OTO'],['toplu','TOPLU ISLEM'],['sunucu','SUNUCU'],['ses','SES'],['arac','ARAC'],['log','LOG']];
 function nav(){
-  const n=$('#nav'); n.innerHTML='<div class="hd">KATEGORILER</div>';
-  const cs={}; FEATURES.forEach(f=>cs[f.cat]=(cs[f.cat]||0)+1);
-  const mk=(label,cnt,key)=>{
-    const e=document.createElement('div');
-    e.className='nv'+(cat===key?' a':'');
-    e.innerHTML='<span>'+esc(label)+'</span><u>'+cnt+'</u>';
-    e.onclick=()=>{cat=key;nav();grid()};
+  const n=$('#nav'); n.innerHTML='';
+  NAV.forEach(([k,l])=>{
+    const c=FEATS.filter(f=>f.view===k).length;
+    const e=document.createElement('div'); e.className='nv'+(k==='hesap'?' a':'');
+    e.innerHTML='<span>'+l+'</span><u>'+c+'</u>';
+    e.onclick=()=>{ $$('.nv').forEach(x=>x.classList.remove('a')); e.classList.add('a');
+      $$('.vw').forEach(v=>v.classList.remove('a')); $('#v-'+k).classList.add('a'); };
     n.appendChild(e);
-  };
-  mk('TUMU',FEATURES.length,'TUMU');
-  Object.keys(cs).forEach(c=>mk(c,cs[c],c));
+  });
+}
+function toggles(sel,ids){
+  const c=$(sel); if(!c)return;
+  ids.forEach(id=>{ const f=FM.get(id); if(!f)return;
+    const d=document.createElement('label'); d.className='tg'+(f.on?' on':'');
+    d.innerHTML='<input type="checkbox" data-f="'+id+'" '+(f.on?'checked':'')+'><i></i><span>'+esc(f.name)+'</span>';
+    c.appendChild(d);
+  });
 }
 document.addEventListener('change',e=>{
-  const t=e.target; if(!t.dataset.t)return;
-  const f=FMAP.get(t.dataset.t); if(!f)return;
-  f.on=t.checked; LS.s('vmt_features',FEATURES.filter(x=>x.on).map(x=>x.id));
-  t.closest('.fc').classList.toggle('o',t.checked);
+  const t=e.target; if(!t.dataset.f)return;
+  const f=FM.get(t.dataset.f); f.on=t.checked;
+  LS.s('vmt_f',FEATS.filter(x=>x.on).map(x=>x.id));
+  t.closest('.tg').classList.toggle('on',t.checked);
 });
-$('#search').addEventListener('input',grid);
-$$('.tb').forEach(b=>b.onclick=()=>{
-  $$('.tb').forEach(x=>x.classList.remove('a')); b.classList.add('a');
-  $$('.vw').forEach(v=>v.classList.remove('a'));
-  $('#v-'+b.dataset.tab).classList.add('a');
-});
+$('#featCount').textContent=FEATS.length+' OZELLIK';
+
+/* butonlar */
 $('#eye').onclick=()=>{const i=$('#token');const h=i.type==='password';i.type=h?'text':'password';$('#eye').textContent=h?'GIZLE':'GOSTER'};
 $('#connect').onclick=async()=>{
   const t=$('#token').value.trim(); if(!t)return log('Token gir','err');
-  S.token=t; if(on('token-save'))LS.s('vmt_token',t);
-  log('Token dogrulaniyor...','info');
-  try{
-    const u=await api('/users/@me'); S.me=u;
+  S.token=t; LS.s('vmt_t',t);
+  try{ const u=await api('/users/@me'); S.me=u;
     log('Giris OK: '+u.username+' ('+u.id+')','ok');
     $('#acc').innerHTML='<b>'+esc(u.username)+'</b> bagli';
-    if(u.premium_type>0)log('Nitro aktif (tip '+u.premium_type+')','ok');
-    if(on('mfa-check'))log('2FA: '+(u.mfa_enabled?'acik':'kapali'),'dim');
-    if(on('account-age'))log('Hesap yasi: '+age(u.id),'dim');
-    connect();
-  }catch(e){ log('Giris basarisiz: '+((e.body&&e.body.message)||e.status),'err'); S.token=''; }
+    await accInfo(); connect();
+  }catch(e){ log('Giris hata: '+((e.body&&e.body.message)||e.status),'err'); S.token=''; }
 };
-function age(id){try{const ms=(BigInt(id)>>22n)+1420070400000n;
-  return Math.floor((Date.now()-ms)/86400000)+' gun'}catch(e){return '?'}}
-$('#allOn').onclick=()=>{FEATURES.forEach(f=>f.on=true);LS.s('vmt_features',FEATURES.map(f=>f.id));grid()};
-$('#allOff').onclick=()=>{FEATURES.forEach(f=>f.on=false);LS.s('vmt_features',[]);grid()};
-const PR={
-  sniper:['sniper-enable','sniper-msg','sniper-embed','sniper-field','sniper-footer','sniper-desc','sniper-gift-link','sniper-promos','sniper-raw','sniper-queue','sniper-429','sniper-dedupe','sniper-log','sniper-sound','sniper-stats','claim-auto','notif-desktop','log-console','gw-reconnect'],
-  ghost:['gw-connect','gw-heartbeat','gw-resume','gw-reconnect','log-console','sec-token-hide','pres-status','scan-hidden','scan-perm-calc','scan-read-test','hc-enable','hc-perm-sim','hc-bypass-read'],
-  join:['join-enable','join-sequential','join-429-handle','join-never-leave','join-detect-joined','join-log','join-progress','join-cap-check','join-resume','log-console']
-};
-$$('[data-preset]').forEach(b=>b.onclick=()=>{
-  const p=b.dataset.preset;
-  if(p==='reset')FEATURES.forEach(f=>f.on=false);
-  else if(p==='full')FEATURES.forEach(f=>f.on=true);
-  else{const l=PR[p]||[];FEATURES.forEach(f=>f.on=l.includes(f.id))}
-  LS.s('vmt_features',FEATURES.filter(f=>f.on).map(f=>f.id)); grid();
-});
-$('#startJoin').onclick=autoJoin;
-$('#stopJoin').onclick=()=>{S.joining=false;log('Durduruldu','warn')};
-$('#resetJoin').onclick=()=>{$('#joinProg').style.width='0';$('#joinBody').innerHTML='<tr><td colspan="4" style="text-align:center;padding:12px">sifirlandi</td></tr>';$('#joinState').value='beklemede'};
-$('#saveSrv').onclick=()=>{LS.s('vmt_servers',$('#srvBox').value.split('\n').map(s=>s.trim()).filter(Boolean));loadServers();log('Liste kaydedildi ('+SERVERS.length+')','ok')};
-$('#startScan').onclick=scanHidden;
-$('#expScan').onclick=()=>{const b=new Blob([JSON.stringify(S.hidden,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='gizli_kanallar.json';a.click()};
-document.addEventListener('click',e=>{ if(e.target.dataset.open){
-  const [g,c]=e.target.dataset.open.split('/');
-  window.open('https://discord.com/channels/'+g+'/'+c,'_blank'); readHidden(c);} });
-$('#tSend').onclick=async()=>{
-  const ch=$('#tChan').value.trim(),m=$('#tMsg').value; if(!ch||!m)return log('Kanal ID ve mesaj gir','err');
-  try{ await api('/channels/'+ch+'/messages',{method:'POST',body:JSON.stringify({content:m})}); log('Gonderildi','ok'); }
-  catch(e){ log('Hata: '+((e.body&&e.body.message)||e.status),'err'); }
-};
-$('#tPurge').onclick=async()=>{
-  const ch=$('#tChan').value.trim(); if(!ch)return log('Kanal ID gir','err');
-  try{ const m=await api('/channels/'+ch+'/messages?limit=100');
-    const ids=m.filter(x=>x.author.id===S.me.id).map(x=>x.id);
-    if(ids.length<2)return log('Silinecek mesaj yok','warn');
-    await api('/channels/'+ch+'/messages/bulk-delete',{method:'POST',body:JSON.stringify({messages:ids.slice(0,100)})});
-    log(ids.length+' mesaj silindi','ok');
-  }catch(e){ log('Purge hata: '+((e.body&&e.body.message)||e.status),'err'); }
-};
-$('#tPing').onclick=async()=>{
-  const ch=$('#tChan').value.trim(); if(!ch)return;
-  try{ const c=await api('/channels/'+ch); log('#'+c.name+' tip '+c.type,'info'); }catch(e){log('Bulunamadi','err')}
-};
-$('#pApply').onclick=()=>{
+$('#accInfo').onclick=accInfo; $('#accRefresh').onclick=refreshMe;
+$$('.hsb').forEach(b=>b.onclick=()=>hs(b.dataset.hs));
+$('#hsRandom').onclick=()=>hs(1+Math.floor(Math.random()*3));
+$('#hsClear').onclick=async()=>{ try{ await api('/hypesquad/online',{method:'POST',body:'{}'}); log('House temizlendi','ok'); }catch(e){log('Hata','err')} };
+$('#bioSet').onclick=()=>patchMe({bio:$('#bio').value.slice(0,190)},'Bio');
+$('#unameSet').onclick=()=>{ const v=$('#uname').value.trim(); if(v)patchMe({username:v},'Kullanici adi'); };
+$('#stApply').onclick=async()=>{
+  const st=$('#stVal').value, txt=$('#stText').value, em=$('#stEmoji').value, act=$('#stAct').value, ty=$('#stType').value;
   if(!S.alive)return log('Bagli degil','err');
-  send({op:3,d:{status:$('#pStatus').value,since:0,afk:false,activities:[
-    {name:$('#pAct').value||'Venice',type:Number($('#pType').value)}]}});
-  log('Presence guncellendi','ok');
+  const acts=[]; if(act)acts.push({name:act,type:Number(ty)});
+  send({op:3,d:{status:st,since:0,afk:false,activities:acts}});
+  try{ await api('/users/@me/settings',{method:'PATCH',body:JSON.stringify({status:st,
+    custom_status:txt?{text:txt,emoji_name:em||null,expires_at:null}:null})}); log('Durum + custom status uygulandi','ok'); }
+  catch(e){ log('Custom status hata: '+((e.body&&e.body.message)||e.status),'err'); }
 };
-$('#saveAr').onclick=()=>{S.set.ar=parseRules();LS.s('vmt_ar',S.set.ar);log(S.set.ar.length+' kural kaydedildi','ok')};
-$('#uGo').onclick=()=>{const v=$('#uId').value.trim(); if(!v)return;
-  try{ $('#uOut').textContent='Olusma: '+new Date(Number((BigInt(v)>>22n)+1420070400000n)).toLocaleString('tr-TR'); }
-  catch(e){ $('#uOut').textContent='gecersiz ID'; } };
-$('#clrLog').onclick=()=>{$('#logbox').innerHTML='';S.logs=[]};
-$('#dlLog').onclick=()=>{const b=new Blob([JSON.stringify(S.logs,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='log.json';a.click()};
-$('#testAll').onclick=async()=>{
-  log('--- TEST ---','info');
-  log('Ozellik: '+FEATURES.length+' | aktif: '+FEATURES.filter(f=>f.on).length,'dim');
+$('#avUp').onclick=()=>fileToData($('#avFile'),d=>{ if(!d)return log('Dosya sec','err'); patchMe({avatar:d},'Avatar'); });
+$('#bnUp').onclick=()=>fileToData($('#bnFile'),d=>{ if(!d)return log('Dosya sec','err'); patchMe({banner:d},'Banner'); });
+$('#avDel').onclick=()=>patchMe({avatar:null},'Avatar sil');
+$('#accentSet').onclick=()=>{ const h=$('#accent').value.replace('#',''); patchMe({accent_color:parseInt(h,16)},'Accent'); };
+$('#connList').onclick=async()=>{ try{ const c=await api('/users/@me/connections');
+  out('#connOut',c.length?c.map(x=>x.type+': '+x.name+' ('+x.id+')').join('\n'):'bagli hesap yok'); }catch(e){ out('#connOut','hata'); } };
+
+$('#snDelay').addEventListener('input',e=>{S.set.snDelay=Number(e.target.value)||700;LS.s('vmt_s',S.set)});
+$('#snBl').addEventListener('input',e=>{S.set.snBl=e.target.value;LS.s('vmt_s',S.set)});
+$('#gwKeys').addEventListener('input',e=>LS.s('vmt_gw',e.target.value));
+$('#gwEmoji').addEventListener('input',e=>LS.s('vmt_gwe',e.target.value));
+$('#rePool').addEventListener('input',e=>LS.s('vmt_re',e.target.value));
+$('#noWord').addEventListener('input',e=>LS.s('vmt_kw',e.target.value));
+$('#arSave').onclick=()=>{ S.set.ar=parseRules(); LS.s('vmt_ar',S.set.ar); log(S.set.ar.length+' kural kaydedildi','ok'); };
+
+$('#mdmStart').onclick=massDM; $('#mmStart').onclick=massMsg; $('#pgStart').onclick=purge;
+$('#mrStart').onclick=massReact; $('#frStart').onclick=massFriend;
+$('#nuLeave').onclick=massLeave; $('#nuDm').onclick=massCloseDM; $('#nuWh').onclick=delWebhooks; $('#nuRead').onclick=massRead;
+$('#panic').onclick=panic; $('#taskStop').onclick=()=>{stop=true;log('Durduruldu','warn')};
+$('#nkSet').onclick=async()=>{ const g=$('#nkGuild').value.trim(),n=$('#nkVal').value;
+  if(!g)return log('Guild ID gir','err');
+  try{ await api('/guilds/'+g+'/members/@me',{method:'PATCH',body:JSON.stringify({nick:n})}); log('Nick degistirildi','ok'); }
+  catch(e){ log('Nick hata: '+((e.body&&e.body.message)||e.status),'err'); } };
+
+$('#gInfo').onclick=gInfo;
+$('#gChans').onclick=()=>gList('channels'); $('#gRoles').onclick=()=>gList('roles');
+$('#gEmojis').onclick=()=>gList('emojis'); $('#gStick').onclick=()=>gList('stickers');
+$('#gWh').onclick=()=>gList('webhooks'); $('#gBans')&&($('#gBans').onclick=()=>gList('bans'));
+$('#mSearchGo').onclick=async()=>{ const g=$('#gId').value.trim(),q=$('#mSearch').value.trim();
+  if(!g||!q)return; try{ const r=await api('/guilds/'+g+'/members/search?query='+encodeURIComponent(q)+'&limit=20');
+    out('#mOut',r.map(x=>x.user.username+' ('+x.user.id+') nick: '+(x.nick||'-')).join('\n')||'sonuc yok'); }
+  catch(e){ out('#mOut','hata: '+((e.body&&e.body.message)||e.status)); } };
+$('#invCreate').onclick=async()=>{ const c=$('#invChan').value.trim(); if(!c)return;
+  try{ const r=await api('/channels/'+c+'/invites',{method:'POST',body:JSON.stringify({max_age:0,max_uses:0})});
+    out('#invOut','https://discord.gg/'+r.code); }catch(e){ out('#invOut','hata: '+((e.body&&e.body.message)||e.status)); } };
+$('#invInfo').onclick=async()=>{ let v=$('#invCode').value.trim().replace(/^https?:\/\/discord\.gg\//,''); if(!v)return;
+  try{ const r=await api('/invites/'+v+'?with_counts=true');
+    out('#invOut',['sunucu: '+r.guild.name,'id: '+r.guild.id,'uye: '+(r.approximate_member_count||'-'),
+      'cevrimici: '+(r.approximate_presence_count||'-'),'kanal: '+r.channel.name].join('\n')); }
+  catch(e){ out('#invOut','hata: '+((e.body&&e.body.message)||e.status)); } };
+$('#hScan').onclick=scanHidden;
+$('#hExp').onclick=()=>{ const b=new Blob([JSON.stringify(S.hidden,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='gizli_kanallar.json';a.click(); };
+document.addEventListener('click',e=>{ if(e.target.dataset.h){ const [g,c]=e.target.dataset.h.split('/');
+  window.open('https://discord.com/channels/'+g+'/'+c,'_blank');
+  api('/channels/'+c+'/messages?limit=1').then(m=>log('Gizli okuma OK -> '+c+' | "'+((m[0]&&m[0].content)||'').slice(0,50)+'"','ok')).catch(()=>log('Okuma reddedildi','warn')); } });
+$('#cInfo').onclick=async()=>{ const c=$('#cId').value.trim(); if(!c)return;
+  try{ const r=await api('/channels/'+c); out('#cOut',JSON.stringify(r,null,2).slice(0,1500)); }catch(e){ out('#cOut','hata'); } };
+$('#cTopicSet').onclick=async()=>{ const c=$('#cId').value.trim(); if(!c)return;
+  try{ await api('/channels/'+c,{method:'PATCH',body:JSON.stringify({topic:$('#cTopic').value})}); log('Konu ayarlandi','ok'); }catch(e){ log('Hata','err'); } };
+$('#cSlowSet').onclick=async()=>{ const c=$('#cId').value.trim(); if(!c)return;
+  try{ await api('/channels/'+c,{method:'PATCH',body:JSON.stringify({rate_limit_per_user:Number($('#cSlow').value)})}); log('Slowmode ayarlandi','ok'); }catch(e){ log('Hata','err'); } };
+$('#cTyping').onclick=()=>{ const c=$('#cId').value.trim(); if(c)api('/channels/'+c+'/typing',{method:'POST'}).then(()=>log('Typing gonderildi','ok')).catch(()=>{}); };
+
+let vMute=false,vDeaf=false;
+function vState(g,c){ if(!S.alive)return log('Bagli degil','err');
+  send({op:4,d:{guild_id:g||null,channel_id:c||null,self_mute:vMute,self_deaf:vDeaf}}); }
+$('#vJoin').onclick=()=>{ const g=$('#vGuild').value.trim(),c=$('#vChan').value.trim();
+  if(!g||!c)return log('Guild ve kanal ID gir','err'); vState(g,c); log('Sese katildi: '+c,'ok'); };
+$('#vLeave').onclick=()=>{ vState(null,null); S.voiceStay=null; log('Sesten ayrildi','ok'); };
+$('#vMute').onclick=()=>{ vMute=!vMute; $('#vMute').textContent='SELF MUTE '+(vMute?'ACIK':'KAPALI');
+  vState($('#vGuild').value.trim(),$('#vChan').value.trim()); };
+$('#vDeaf').onclick=()=>{ vDeaf=!vDeaf; $('#vDeaf').textContent='SELF DEAF '+(vDeaf?'ACIK':'KAPALI');
+  vState($('#vGuild').value.trim(),$('#vChan').value.trim()); };
+$('#vStay').onclick=()=>{ const g=$('#vGuild').value.trim(),c=$('#vChan').value.trim();
+  if(!g||!c)return log('Guild ve kanal ID gir','err');
+  S.voiceStay={g,c}; vState(g,c); log('24/7 voice acildi','ok'); };
+$('#vaSet').onclick=()=>{ const g=$('#vaGuild').value.trim(),c=$('#vaChan').value.trim();
+  if(!g||!c)return; S.voiceStay={g,c}; LS.s('vmt_voice',{g,c}); log('Otomatik ses katilim ayarlandi','ok'); };
+
+$('#wGo').onclick=whois;
+$('#wAv').onclick=()=>{ const id=$('#wId').value.trim(); if(!id)return;
+  api('/users/'+id).then(u=>{ if(!u.avatar)return log('Avatar yok','warn');
+    window.open(CDN+'/avatars/'+u.id+'/'+u.avatar+'.png?size=1024','_blank'); }).catch(()=>{}); };
+$('#sGo').onclick=()=>{ const v=$('#sId').value.trim(); try{
+  const ms=Number((BigInt(v)>>22n)+1420070400000n);
+  out('#sOut','olusturma: '+new Date(ms).toLocaleString('tr-TR')+'\nyas: '+Math.floor((Date.now()-ms)/86400000)+' gun');
+ }catch(e){ out('#sOut','gecersiz id'); } };
+const PL={CREATE_INSTANT_INVITE:1,KICK_MEMBERS:2,BAN_MEMBERS:4,ADMINISTRATOR:8,MANAGE_CHANNELS:16,MANAGE_GUILD:32,ADD_REACTIONS:64,VIEW_AUDIT_LOG:128,PRIORITY_SPEAKER:256,STREAM:512,VIEW_CHANNEL:1024,SEND_MESSAGES:2048,SEND_TTS_MESSAGES:4096,MANAGE_MESSAGES:8192,EMBED_LINKS:16384,ATTACH_FILES:32768,READ_MESSAGE_HISTORY:65536,MENTION_EVERYONE:131072,USE_EXTERNAL_EMOJIS:262144,VIEW_GUILD_INSIGHTS:524288,CONNECT:1048576,SPEAK_VOICE:2097152,MUTE_MEMBERS:4194304,DEAFEN_MEMBERS:8388608,MOVE_MEMBERS:16777216,USE_VAD:33554432,CHANGE_NICKNAME:67108864,MANAGE_NICKNAMES:134217728,MANAGE_ROLES:268435456,MANAGE_WEBHOOKS:536870912,MANAGE_EMOJIS:1073741824};
+$('#pGo').onclick=()=>{ const v=BigInt($('#pPerm').value||0); const l=[];
+  for(const k in PL){ if((v&BigInt(PL[k]))===BigInt(PL[k]))l.push(k); }
+  out('#pOut',l.length?l.join('\n'):'izin yok'); };
+$('#ebSend').onclick=()=>{ const c=$('#ebChan').value.trim(); if(!c)return log('Kanal ID gir','err');
+  const col=parseInt($('#ebColor').value.replace('#',''),16);
+  api('/channels/'+c+'/messages',{method:'POST',body:JSON.stringify({embeds:[{title:$('#ebTitle').value,description:$('#ebDesc').value,color:col}]})})
+    .then(()=>log('Embed gonderildi','ok')).catch(e=>log('Hata: '+((e.body&&e.body.message)||e.status),'err')); };
+$('#whSend').onclick=async()=>{ const u=$('#whUrl').value.trim(),m=$('#whMsg').value; if(!u)return;
+  try{ await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:m})}); log('Webhook gonderildi','ok'); }
+  catch(e){ log('Webhook hata','err'); } };
+$('#tkGo').onclick=async()=>{
+  const list=$('#tkList').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  let r='';
+  for(const t of list){
+    try{ const u=await api('/users/@me',{},0,t);
+      r+=u.username+' ('+u.id+') OK'+(u.premium_type>0?' [NITRO]':'')+'\n'; }
+    catch(e){ r+='GECERSIZ ('+((e.body&&e.body.message)||e.status)+')\n'; }
+  }
+  out('#tkOut',r||'token yok');
+};
+$('#uHexGo').onclick=()=>{ const h=$('#uHex').value.replace('#',''); const n=parseInt(h,16);
+  out('#uOut','hex: #'+h+'\nrgb: '+[(n>>16)&255,(n>>8)&255,n&255].join(', ')+'\ndec: '+n); };
+$('#uTsGo').onclick=()=>{ const t=$('#uTs').value||new Date().toLocaleString('tr-TR');
+  const ts=Math.floor(new Date(t).getTime()/1000);
+  out('#uOut','<t:'+ts+':R>  '+ts); };
+$('#lgClr').onclick=()=>{ $('#logbox').innerHTML=''; S.logs=[]; };
+$('#lgExp').onclick=()=>{ const b=new Blob([JSON.stringify(S.logs,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='log.json';a.click(); };
+$('#lgTest').onclick=async()=>{ log('--- TEST ---','info');
+  log('Ozellik: '+FEATS.length+' | aktif: '+FEATS.filter(f=>f.on).length,'dim');
   log('Token: '+(S.token?'var':'yok')+' | baglanti: '+(S.alive?'aktif':'kapali'),'dim');
   log('Sunucu: '+S.guilds.size+' | ping: '+S.lat+'ms','dim');
-  if(S.token){try{const u=await api('/users/@me');log('API OK: '+u.username,'ok')}catch(e){log('API HATA','err')}}
-};
-const bind=(s,k,n)=>$(s).addEventListener('input',e=>{S.set[k]=n?Number(e.target.value):e.target.value;LS.s('vmt_set',S.set)});
-bind('#snipeDelay','snipeDelay',true); bind('#joinDelay','joinDelay',true);
-bind('#maxGuilds','maxGuilds',true); bind('#snipeBl','snipeBl',false);
+  if(S.token){try{const u=await api('/users/@me');log('API OK: '+u.username,'ok')}catch(e){log('API HATA','err')}} };
 
-/* ---------- INIT ---------- */
+/* ses 24/7 tekrar baglanma */
+setInterval(()=>{ if(S.voiceStay&&S.alive)send({op:4,d:{guild_id:S.voiceStay.g,channel_id:S.voiceStay.c,self_mute:vMute,self_deaf:vDeaf}}); },120000);
+
+/* ---------------- INIT ---------------- */
 (function(){
-  const sf=LS.g('vmt_features'); if(sf)sf.forEach(id=>{const f=FMAP.get(id);if(f)f.on=true});
-  const st=LS.g('vmt_set'); if(st)Object.assign(S.set,st);
-  if(S.set.snipeDelay)$('#snipeDelay').value=S.set.snipeDelay;
-  if(S.set.joinDelay)$('#joinDelay').value=S.set.joinDelay;
-  if(S.set.snipeBl)$('#snipeBl').value=S.set.snipeBl;
+  const sf=LS.g('vmt_f'); if(sf)sf.forEach(id=>{const f=FM.get(id);if(f)f.on=true});
+  const ss=LS.g('vmt_s'); if(ss)Object.assign(S.set,ss);
+  if(S.set.snDelay)$('#snDelay').value=S.set.snDelay;
+  if(S.set.snBl)$('#snBl').value=S.set.snBl;
   if(S.set.ar&&S.set.ar.length)$('#arRules').value=S.set.ar.map(r=>(r.mode==='exact'?'':r.mode+':')+r.left+' => '+r.rights.join(' | ')).join('\n');
-  const t=LS.g('vmt_token'); if(t){$('#token').value=t;S.token=t}
-  loadServers(); nav(); grid();
-  log('VENICE MULTI TOOL baslatildi - '+FEATURES.length+' ozellik','ok');
+  const g=LS.g('vmt_gw'); if(g)$('#gwKeys').value=g;
+  const ge=LS.g('vmt_gwe'); if(ge)$('#gwEmoji').value=ge;
+  const rp=LS.g('vmt_re'); if(rp)$('#rePool').value=rp;
+  const kw=LS.g('vmt_kw'); if(kw)$('#noWord').value=kw;
+  const vv=LS.g('vmt_voice'); if(vv){$('#vaGuild').value=vv.g;$('#vaChan').value=vv.c;}
+  const t=LS.g('vmt_t'); if(t){$('#token').value=t;S.token=t}
+
+  toggles('#snToggles',['sniper-enable','sniper-msg','sniper-embed','sniper-field','sniper-footer','sniper-desc','sniper-button','sniper-raw','sniper-gift','sniper-promos','sniper-dm','sniper-webhook','sniper-429','sniper-dedupe','sniper-log','sniper-sound','sniper-desktop','sniper-speed']);
+  toggles('#gwToggles',['giveaway-join','giveaway-emoji','giveaway-keyword']);
+  toggles('#gpToggles',['ghost-ping','ghost-ping-log']);
+  toggles('#arToggles',['auto-reply','auto-reply-regex','auto-reply-log']);
+  toggles('#reToggles',['auto-react','auto-react-pool']);
+  toggles('#noToggles',['mention-notify','keyword-notify','message-log','dm-log','auto-bump']);
+
+  nav(); upd();
+  log('VENICE MULTI TOOL baslatildi','ok');
+  log(FEATS.length+' gercek ozellik yuklendi. Token gir ve BAGLAN.','info');
   if(Notification&&Notification.permission==='default')try{Notification.requestPermission()}catch(e){}
   setInterval(upd,2000);
 })();
